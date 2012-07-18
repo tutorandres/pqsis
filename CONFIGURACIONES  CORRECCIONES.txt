@@ -1,0 +1,162 @@
+
+##################################################
+##################################################
+
+
+en phpmyadmin es sena y sena
+
+
+##################################################
+##################################################
+
+
+4)y falta verificar que si se le este enviando la citacion o tablita de programacion al director de grupo. que aparece en el nuevo reglamento.
+
+
+5)cambiar de lider a vocero en todo lado, mirar los documentos.
+
+
+6)generar la citacion de anticipacion de 5 dias de cancelacion que se llama notificacion de sancion y esto mismo modelar el proceso de desercion pagina 15 y 16 del nuevo reglamento.
+
+7) quitar lo del pantallazo de siscomites de que muestra el reglamento aplicado a las sanciones pues ya no aplica lo de lso casos en el reglamento no aparece solo aparece la sancion mas no el numeral especifico y ya no se puede escoger yo le quite la opcion del tratamieto de casos porque en el nuevo no aparece.
+
+
+8)Para organizar en el aplicativo:Los condicionamientos no pueden ser mayores a 30 días, ahí aparecen todavia 90 días.
+
+
+REVIZAR DENTRO DE LA CARPETA RUNTIME EL LOG DE LOS ERRORRES, OJO CON ESOS ERRORES
+
+Y TAMBIEN VERIFICAR LOS ULTIMOS ERRORES ENCONTRADOS EN EL COMITE QUE HICE TEMPORAL EN
+MI EQUIPO YO LOS COPIE POR HAY MIRAR Y REVIZAR ESO.
+
+
+OJO ME SACO ERROR Y LO DEJE EN DEBUG
+
+
+#######################################################
+#######################################################
+
+     YA RESUELTAS   
+
+1)http://www.andresgarcia.us/aplicaciones/siscomites/index.php?page=secretario.Generar_acta&sesion=9&grupo=63
+  http://www.andresgarcia.us/aplicaciones/siscomites/index.php?page=secretario.Generar_acta&sesion=9&grupo=60
+
+
+Fatal error: Call to undefined method stdClass::save() in /home/andresga/public_html/aplicaciones/siscomites/protected/pages/secretario/Generar_acta.php on line 318
+
+los errores era por borrar casoso oinformes y quedaban datos sin trAZABILIDAD, le quite la opcion de eliminar desde la misma acta.
+
+
+
+2)http://www.andresgarcia.us/aplicaciones/siscomites/index.php?page=secretario.Generar_acta&sesion=10&grupo=70
+
+
+3)y cambiar el orden de sesiones y despues trimestres
+y la odea es mas logica si en el menu aparece primero crear trimestre y luego crear sesiones.
+
+
+
+
+
+##################################################
+##################################################
+
+
+OJO CUANDO VAYA A INSTALAR EN RED LAN BORRAR EL ARCHIVO .HTACCESS
+QUE SE GENERA SIEMPRE QUE SE PRENDA EL MOWES.EXE IR BORRARLO DENTRO
+DEL WWW.
+
+Y COLOCARLE CONTRASEÑA AL PHPMYADMIN
+
+Y SI ESTA OCUPADO EL PUERO EN EL CONFIG DEL APACHE CAMBIARLO EN LISTEN
+Y EN NAMESERVER A 81 O 8080
+
+
+
+
+PROCEDIMIENTO:
+
+1) Suba los archivos al servidor.
+
+2) Cambie los permisos al archivo:
+   index.php a 0755
+
+
+//VEIRIFICAR SI ESTE PUNTO SI ES NECESARIO CREO QUE NO
+//LOS ARCHIVOS HAY QUE CAMBIARLOS PERO A LA WEB
+3) Cambiar tambien a 0755 a clientscripts.php en la ruta
+   aplicaciones/siscomites/framework/Web/Javascripts
+
+
+4) En el index.php cambiar DE prado.php a pradolite.php
+en la linea $frameworkPath=$basePath.'/../framework/prado.php';
+
+
+5) POR SEGURIDAD CAMBIAR LOS PERMISOS DE LOS ARCHIVOS A 600 (NO LECTURA DEL MUNDO)
+http://www.e-quid.com/aplicaciones/siscomites/protected/application.xml
+http://www.e-quid.com/aplicaciones/siscomites/protected/pages/config.xml
+
+
+6) Ejecutar la aplicacion desde el explorador y dentro de la carpeta creada en assets
+buscar el archivo  clientscripts.php y cambiarlo a permisos 755 y borrar el cache
+del navegador.
+
+
+7) cambiarle el permiso a la carpeta creada en assets
+a 0755 porque con 0777 se generan problemas y borrar el cache
+del navegador.
+
+
+8) Ejecutar el proceso de iniciar sesion y el proceso enviar caso y enviar informe
+el cual genera otras dos carpeta en assets las cuales debe cambiarse a permisos 755 y 
+borrar el cache del navegador.
+
+
+9) cambiar de modo Off a Normal en application.xml y tambien
+quitar los levels "Info, Notice, Warning,"  y borrar el cache del navegador.
+
+
+DETALLES ENCONTRADOS EN LE MANEJO DEL SERVIDOR:
+
+
+1)CONTROLADORES EN ANSI Y VISTAS EN ANSI CON WITHOUT UTF-8
+
+
+2)eL PROBLEMA DE EDITAR LOS ARCHIVOS ES QUE EL EDITOR WEB LOS GRABA
+CON FORMATO UTF-8 Y PARA QUE FUNCIONEN LAS TILDES DEBE ESTAR
+CON FORMATO ANSI O WINDOWS-1252. POR ESO SE DEBEN DE VOLVER A SUBIR
+
+
+
+
+
+##################################################
+##################################################
+
+
+
+PARA PASAR LOS DATOS HACERLO EN ESTOS ORDEN DE BASE DE DATOS:
+
+1)  vaciar casos
+2)  vaciar informes
+3)  vaciar administracion
+4)  vaciar aprendices
+5)  vaciar asistentes
+6)  vaciar compromisos
+7)  vaciar decisiones
+8)  vaciar integrantes
+9)  vaciar usuarios
+10) vaciar procesos
+11) vaciar programaciones
+12) vaciar grupos
+13) vaciar sesiones
+14) vaciar programas
+15) vaciar centros
+16) vaciar quejosos
+17) vaciar reglamentos
+18) vaciar sanciones
+19) vaciar tipificacones
+20) vaciar titulaciones
+21) vaciar trimentres
+22) vaciar actas
+23) vaciar tipos

@@ -1,0 +1,174 @@
+<com:TContent ID="contenido">
+
+    <h1>AGREGAR GRUPO</h1>
+    
+	<br/><br/>
+    <com:TTable Width="510px">
+
+              <com:TTableRow>
+                <com:TTableCell>
+                    <com:TLabel ID="Label1" Text="C&oacute;digo:" ForControl="codigo" />
+                </com:TTableCell>
+                <com:TTableCell>
+                    <com:TTextBox ID="codigo" Width="150px"/>
+                    <com:TRequiredFieldValidator ControlToValidate="codigo" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />
+                    <com:TDataTypeValidator ControlToValidate="codigo" DataType="Integer" Display="Dynamic" ErrorMessage="Solo numeros." ValidationGroup="Group1" />
+               </com:TTableCell>
+              </com:TTableRow>
+			  
+			  
+			  <com:TTableRow>
+                <com:TTableCell>
+                    <com:TLabel ID="Label2" Text="Director nombre:" ForControl="director_nombre" />
+                </com:TTableCell>
+                <com:TTableCell>
+                    <com:TTextBox ID="director_nombre" Width="150px"/>
+                    <com:TRequiredFieldValidator ControlToValidate="director_nombre" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />   
+                    <com:TRegularExpressionValidator ID="validador_director" ControlToValidate="director_nombre" RegularExpression="^[A-Za-záéíóúñÁÉÍÓÚÑ ]*$" Display="Dynamic" ErrorMessage="Solo letras." ValidationGroup="Group1" />
+			   </com:TTableCell>
+              </com:TTableRow>
+
+              <com:TTableRow>
+                <com:TTableCell>
+                    <com:TLabel ID="Label3" Text="Director correo:" ForControl="director_correo" />
+                </com:TTableCell>
+                <com:TTableCell>
+                    <com:TTextBox ID="director_correo" Width="150px"/><br/>
+					<com:TRequiredFieldValidator ControlToValidate="director_correo" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />
+                    <com:TRegularExpressionValidator  RegularExpression="^[\w-\.]+@([\w-]+\.)+[\w-]{2,8}$" ControlToValidate="director_correo" Display="Dynamic" ErrorMessage="Correo invalido." ValidationGroup="Group1" />
+                </com:TTableCell>
+              </com:TTableRow>
+      
+	  
+	         <com:TTableRow>
+                <com:TTableCell>
+                    <com:TLabel ID="Label4" Text="Vocero nombre:" ForControl="vocero_nombre" />
+                </com:TTableCell>
+                <com:TTableCell>
+                    <com:TTextBox ID="vocero_nombre" Width="150px"/>
+                    <com:TRequiredFieldValidator ControlToValidate="vocero_nombre" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />   
+                    <com:TRegularExpressionValidator ID="validador_vocero" ControlToValidate="vocero_nombre" RegularExpression="^[A-Za-záéíóúñÁÉÍÓÚÑ ]*$" Display="Dynamic" ErrorMessage="Solo letras." ValidationGroup="Group1" />
+			   </com:TTableCell>
+              </com:TTableRow>
+
+              <com:TTableRow>
+                <com:TTableCell>
+                    <com:TLabel ID="Label5" Text="Vocero correo:" ForControl="vocero_correo" />
+                </com:TTableCell>
+                <com:TTableCell>
+                    <com:TTextBox ID="vocero_correo" Width="150px"/><br/>
+					<com:TRequiredFieldValidator ControlToValidate="vocero_correo" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />  
+					<com:TRegularExpressionValidator  RegularExpression="^[\w-\.]+@([\w-]+\.)+[\w-]{2,8}$" ControlToValidate="vocero_correo" Display="Dynamic" ErrorMessage="Correo invalido." ValidationGroup="Group1" />
+                </com:TTableCell>
+              </com:TTableRow>
+	  
+			  
+			  
+			  <com:TTableRow>
+                <com:TTableCell>
+                    <com:TLabel ID="Label6" Text="Fecha inicial:" ForControl="fecha_inicial" />
+                </com:TTableCell>
+                <com:TTableCell>
+					<com:TDatePicker 
+						ID="fecha_inicial" 
+						DateFormat="yyyy-MM-dd"
+						Culture="es"		
+						InputMode="DropDownList"
+						Mode="Basic"
+						CssClass="calendarstyle"
+					/>
+                </com:TTableCell>
+              </com:TTableRow>
+			  
+			  
+			  <com:TTableRow>
+                <com:TTableCell>
+                    <com:TLabel ID="Label7" Text="Fecha final:" ForControl="fecha_final" />
+                </com:TTableCell>
+                <com:TTableCell>
+					<com:TDatePicker 
+						ID="fecha_final" 
+						DateFormat="yyyy-MM-dd"
+						Culture="es"		
+						InputMode="DropDownList"
+						Mode="Basic"
+						CssClass="calendarstyle"
+					/>
+                </com:TTableCell>
+              </com:TTableRow>
+			  
+			  
+			  <com:TTableRow>
+                <com:TTableCell>
+                    <com:TLabel ID="Label8" Text="Disponibilidad:" ForControl="estado" />
+                </com:TTableCell>
+                <com:TTableCell>
+				   <com:TDropDownList ID="estado" Width="200px" >
+					 <com:TListItem Value="1" Text="Disponible" />
+					 <com:TListItem Value="0" Text="No Disponible"/>
+				   </com:TDropDownList>
+                </com:TTableCell>
+              </com:TTableRow> 
+			  
+			  
+			 <com:TTableRow>
+                <com:TTableCell>
+                    <com:TLabel ID="Label9" Text="Titulaciones:" ForControl="titulaciones" />
+                </com:TTableCell>
+                <com:TTableCell>
+                      <com:TDropDownList
+                      ID="titulaciones"
+                      Width="350px" >
+                      </com:TDropDownList> 
+                      <com:TRequiredFieldValidator ControlToValidate="titulaciones" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />
+                </com:TTableCell>
+              </com:TTableRow>
+
+  
+			 <com:TTableRow>	
+				<com:TTableCell>
+				</com:TTableCell>
+				
+				<com:TTableCell>
+				<br/>
+				<com:TImage ImageUrl="themes/Basic/punto_azul.png" Style="padding:0px;border-style:none;margin-left:1px;"  ImageAlign="middle" ToolTip="Consultar" /> 
+				<com:TActiveLinkButton
+				Text="Enviar"
+				Font.Size="12pt"
+				ValidationGroup="Group1"
+				OnCallback="prepararDatos"
+				ActiveControl.CallbackParameter="value">
+				<prop:ClientSide 
+				OnLoading="Element.show('callback_image');"  
+				OnComplete="Element.hide('callback_image');
+				$('<%= $this->codigo->ClientID %>').value = '';
+				$('<%= $this->vocero_nombre->ClientID %>').value = '';
+				$('<%= $this->vocero_correo->ClientID %>').value = '';
+				$('<%= $this->director_nombre->ClientID %>').value = '';
+				$('<%= $this->director_correo->ClientID %>').value = '';" 
+				/>	
+				</com:TActiveLinkButton>
+				<span id="callback_image" style="display:none">Enviando...<img src="themes/Basic/loading.gif" alt="Cargando"/></span>
+				</com:TTableCell>
+				
+			</com:TTableRow>	  
+	  </com:TTable>
+	
+	<br /><br />
+   	<com:TActiveLabel ID="mensajes" Text=""></com:TActiveLabel>
+	<com:TActiveLabel ID="alertas" Text=""></com:TActiveLabel>
+	<br /><br />
+	
+	
+	<!-- <com:TJavascriptLogger /> -->
+    
+</com:TContent>
+
+
+<com:TContent ID="informacion">
+   <com:TLabel ID="usuario"  Text="<b>Usuario:</b> Ninguno." />
+</com:TContent>
+
+
+
+

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<!-- 
+COLOCAR EN OFF PARA DESHABILITAR EL SERVICIO 
+CAMBIAR DE "Debug" A "Normal" EN SERVIDOR ONLINE
+POR SEGURIDAD CAMBIAR LOS PERMISOS DE ESTE ARCHIVO A 0600 (NO LECTURA DEL MUNDO)   
+-->
+<application id="senacomites" mode="Debug">
+  <paths>
+  <using namespace="Application.database.*" />
+  </paths>
+
+ 
+  <!-- configuration for available services -->
+  <services>
+  <service id="page" class="TPageService" DefaultPage="inicio.Pagina_principal">
+      <!-- initial properties set for all pages -->
+      <pages MasterClass="Application.layouts.AplicacionLayout" Theme="Basic" Title="SIScomites"/>
+  </service>
+  
+  </services>
+  
+  
+<modules>
+
+
+<!-- ACTIVAR EN SERVIDOR ONLINE --> 
+ <!--
+<module id="cache" class="System.Caching.TDbCache" /> 
+
+-->
+
+<module id="db" class="System.Data.TDataSourceConfig">
+    <database ConnectionString="mysql:host=mysql2.000webhost.com;dbname=a3670010_cyt" Charset="utf8" Username="a3670010_cyt" Password="siscomites1563" />
+</module>
+
+<module class="System.Data.ActiveRecord.TActiveRecordConfig" ConnectionID="db" />
+
+<module class="System.I18N.TGlobalization" DefaultCharset="utf-8" />
+
+<!--  BORRAR EN Levels "Info, Notice, Warning," EN SERVIDOR ONLINE -->
+<module id="log" class="System.Util.TLogRouter">
+  <route class="TFileLogRoute" Levels="Info, Notice, Warning, Error, Alert, Fatal" />
+</module>
+		
+<module id="auth" class="System.Security.TAuthManager" UserManager="users" LoginPage="usuarios.Usuario_login" />
+<module id="users" class="Application.pages.usuarios.Usuario_manager" />
+		
+
+
+
+</modules>
+
+
+
+
+</application>

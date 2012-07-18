@@ -1,0 +1,277 @@
+
+<com:TContent ID="contenido">
+
+	 <h1>PROGRAMACI&Oacute;N DE SESI&Oacute;N DE COMIT&Eacute;S</h1>
+	 <br />
+	 <br />
+
+	 
+<table style="width=520px;padding:0px;margin:0px;">
+	 <tr>
+		 <td><b>Seleccione un trimestre:</b></td>
+		 <td>
+			<com:TDropDownList 
+			ID="trimestre_id"
+			AutoPostBack="true"
+			Width="250px"
+			OnSelectedIndexChanged="cargar_sesiones" 
+			/>
+		 </td>		
+	 </tr>
+	 
+	 <tr>
+		 <td><b>Seleccione una sesi&oacute;n:</b></td>
+		 <td>
+			<com:TDropDownList 
+			ID="sesion_id"
+			AutoPostBack="true"
+			Width="250px"
+			OnSelectedIndexChanged="cargar_programacion" 
+			/>
+		 </td>		
+	 </tr>
+	 
+	 <tr>
+		<td><b>Seleccione una hora:</b></td>
+		<td>
+			<com:TDropDownList ID="hora"
+			Width="60px">
+				<com:TListItem Value="6" />
+				<com:TListItem Value="7" />
+				<com:TListItem Value="8" />
+				<com:TListItem Value="9" />
+				<com:TListItem Value="10" />
+				<com:TListItem Value="11" />
+				<com:TListItem Value="12" />
+				<com:TListItem Value="13" />
+				<com:TListItem Value="14" />
+				<com:TListItem Value="15" />
+				<com:TListItem Value="16" />
+				<com:TListItem Value="17" />
+				<com:TListItem Value="18" />
+				<com:TListItem Value="19" />
+				<com:TListItem Value="20" />
+				<com:TListItem Value="21" />
+				</com:TDropDownList>
+						
+				<com:TDropDownList ID="minutos"
+				Width="60px">
+				<com:TListItem Value="00" />
+				<com:TListItem Value="15" />
+				<com:TListItem Value="30" />
+				<com:TListItem Value="45" />
+				</com:TDropDownList>
+						
+		</td>
+	</tr>
+	 
+
+	 
+	<tr>
+	  <td><b>Seleccione un caso:</b></td>
+	  <td>
+			<com:TDropDownList 
+			ID="caso_id"
+			Enabled="false"
+			Width="250px" 
+			AutoPostBack="false"
+			/>
+ 			
+			<com:TImage ImageUrl="themes/Basic/punto_amarillo.png" Style="padding:0px;border-style:none;margin-left:0px;"  ImageAlign="middle" ToolTip="Agregar Caso" />
+			<com:TLinkButton  
+			ID="bcaso" 
+			Text="+ Caso"
+			Enabled="false"			
+			OnCommand="agregar_caso" 
+			ValidationGroup="Group1"		
+			/> 
+			<br/>
+			<com:TRequiredFieldValidator ControlToValidate="caso_id" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />
+	   </td>
+	</tr>
+	
+	
+	<tr>
+	  <td><b>Seleccione un informe:</b></td>
+	  <td>
+			<com:TDropDownList 
+			ID="informe_id"
+			Width="250px"
+			Enabled="false"
+			AutoPostBack="false"
+			/>
+			
+			<com:TImage ImageUrl="themes/Basic/punto_amarillo.png" Style="padding:0px;border-style:none;margin-left:0px;"  ImageAlign="middle" ToolTip="Agregar Informe" />		
+			<com:TLinkButton 
+			ID="binforme" 
+			Text="+ Informe"
+			Enabled="false"			
+			OnCommand="agregar_informe" 
+			ValidationGroup="Group2" 
+			/> 
+			<br/>
+			<com:TRequiredFieldValidator ControlToValidate="informe_id" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group2" />
+	   </td>
+	</tr>
+	 
+	 <tr>
+		 <td colspan="2">
+		 
+			
+	<com:TActivePanel id="DataPanel">
+			<br />		
+			<span id="callback_image" style="display:none">Enviando...<img src="themes/Basic/loading.gif" alt="Cargando"/></span>	
+			<br />			
+
+
+				<com:TDataList
+				 ID="DataList"
+				 DataKeyField="id"
+				 AllowPaging="false"
+				 OnEditCommand="editItem"
+				 OnCancelCommand="cancelItem"
+				 OnUpdateCommand="updateItem"
+				 OnDeleteCommand="deleteItem"
+				 OnSelectedIndexChanged="selectItem"
+				 HeaderStyle.BackColor="#74A846"
+				 ItemStyle.BackColor="#E6ECFF"
+				 AlternatingItemStyle.BackColor="#FFFFFF"
+				 EditItemStyle.BackColor="#E4E4E4"
+				 SelectedItemStyle.BackColor="lightyellow"
+				>	
+				
+				<prop:HeaderTemplate>
+				<table style="width=520px;padding:0px;margin:0px;">
+				<tr> 
+				   <th width="70px">Hora</th>
+				   <th width="150px">Grupo</th> 				   
+				   <th width="150px">Aprendiz/Quejoso</th>
+				   <th width="50px">Tipo</th> 				   
+				   <th width="100px">Opciones</th> 
+				</tr>
+				</table> 
+				</prop:HeaderTemplate>
+				<prop:ItemTemplate>
+				<table style="width=520px;padding:0px;margin:0px;">
+				<tr>
+				  <td width="70px"><%#$this->DataItem['hora']%></td>	 
+				  <td width="150px">
+					  <%#$this->DataItem['grupo_codigo']%> -     
+					  <%#$this->DataItem['grupo_nombre']%>  
+				  </td>
+				  <td width="150px">  
+					  <%#$this->DataItem['nombre']%><br/> 
+				  </td>
+				  <td width="50px"><%#$this->DataItem['tipo']%></td>				  
+				  <td width="100px">
+				  
+				  <com:TImage ImageUrl="themes/Basic/punto_verde.png" Style="padding:0px;border-style:none;margin-left:10px;"  ImageAlign="middle" ToolTip="Editar" />
+				  <com:TLinkButton Text="Editar" CommandName="edit" />
+				  
+				  
+				  <com:TImage ImageUrl="themes/Basic/punto_morado.png" Display=<%#$this->DataItem['citacion']%> Style="padding:0px;border-style:none;margin-left:10px;"  ImageAlign="middle" ToolTip="Generar Citaci&oacute;n" />
+				  <com:TLinkButton
+						ID="bcitacion"
+						Text="Citaci&oacute;n"
+						CommandName="select" 
+						Attributes.onclick="if(!confirm('Esta seguro de generar la citaci\xf3n en este momento?. Recuerde que si modifica la sesi\xf3n debe volver a generar y enviar la citaci\xf3n.')) return false;"
+						Display=<%#$this->DataItem['citacion']%>
+					>
+				  </com:TLinkButton>
+					
+				  <com:TImage ImageUrl="themes/Basic/punto_rojo.png" Style="padding:0px;border-style:none;margin-left:10px;"  ImageAlign="middle" ToolTip="Eliminar" />
+				  <com:TLinkButton Text="Eliminar" CommandName="delete" Attributes.onclick="if(!confirm('Esta seguro?')) return false;"/>
+				  </td>
+				</tr>
+				</table>
+				</prop:ItemTemplate>
+				
+				
+				<prop:EditItemTemplate>
+				<table>
+				<tr>
+					  <td><b>Seleccione una hora:</b></td>
+					  <td>
+					   <com:TDropDownList ID="horamod"
+						Width="60px"
+						SelectedValue=<%# DATE("H",STRTOTIME($this->DataItem['hora'])) %>
+						>
+						<com:TListItem Value="6" />
+						<com:TListItem Value="7" />
+						<com:TListItem Value="8" />
+						<com:TListItem Value="9" />
+						<com:TListItem Value="10" />
+						<com:TListItem Value="11" />
+						<com:TListItem Value="12" />
+						<com:TListItem Value="13" />
+						<com:TListItem Value="14" />
+						<com:TListItem Value="15" />
+						<com:TListItem Value="16" />
+						<com:TListItem Value="17" />
+						<com:TListItem Value="18" />
+						<com:TListItem Value="19" />
+						<com:TListItem Value="20" />
+						<com:TListItem Value="21" />
+						</com:TDropDownList>
+						
+						<com:TDropDownList ID="minutosmod"
+						Width="60px"
+						SelectedValue=<%# DATE("i",STRTOTIME($this->DataItem['hora'])) %>
+						>
+						<com:TListItem Value="00" />
+						<com:TListItem Value="15" />
+						<com:TListItem Value="30" />
+						<com:TListItem Value="45" />
+						</com:TDropDownList>
+						
+					   </td>
+					</tr>
+				<tr>
+				  <td colspan="2" align="right">
+					<br/>
+						<com:TImage ImageUrl="themes/Basic/punto_azul.png" Style="padding:0px;border-style:none;margin-left:10px;"  ImageAlign="middle" ToolTip="Guardar" />
+						<com:TLinkButton Text="Guardar" CommandName="update" />
+						<com:TImage ImageUrl="themes/Basic/punto_rojo.png" Style="padding:0px;border-style:none;margin-left:10px;"  ImageAlign="middle" ToolTip="Cancelar" />
+						<com:TLinkButton Text="Cancelar" CommandName="cancel" />
+				  </td>
+				</tr>
+				</table>
+				</prop:EditItemTemplate>
+				
+				 
+				</com:TDataList>
+		 </td>		
+	 </tr>
+    </table>
+	
+	 <br />
+	
+	 <com:TImage ImageUrl="themes/Basic/punto_morado.png" Style="padding:0px;border-style:none;margin-left:10px;"  ImageAlign="middle" ToolTip="Generar Citaci&oacute;n" />
+ 	 <com:TLinkButton
+		ID="binvitar"
+		Text="Generar Citaci&oacute;n Global"
+		Enabled="false"
+		OnCommand="invitar"	
+		Attributes.onclick="if(!confirm('Esta seguro de generar la citaci\xf3n en este momento?. Recuerde que si modifica la sesi\xf3n debe volver a generar y enviar la citaci\xf3n.')) return false;"		
+	 >	
+	 </com:TLinkButton>
+	
+	
+	
+	<br /><br />
+   	<com:TActiveLabel ID="mensajes" Text=""></com:TActiveLabel>
+	<com:TActiveLabel ID="alertas" Text=""></com:TActiveLabel>
+	<br /><br />
+
+  <!--   <com:TJavascriptLogger />  -->
+  
+    </com:TActivePanel>	
+  
+</com:TContent>
+
+
+<com:TContent ID="informacion">
+   <com:TLabel ID="usuario"  Text="<b>Usuario:</b> Ninguno." />
+</com:TContent>
+
+

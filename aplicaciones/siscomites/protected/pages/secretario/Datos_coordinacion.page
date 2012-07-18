@@ -1,0 +1,139 @@
+
+<com:TContent ID="contenido">
+
+<h1>DATOS DE LA COORDINACION</h1><br />
+
+
+<com:TDataList
+     ID="DataList"
+     DataKeyField="id"
+	 AllowPaging="true"
+	 PageSize="5"
+     OnEditCommand="editItem"
+     OnCancelCommand="cancelItem"
+     OnUpdateCommand="updateItem"
+     OnDeleteCommand="deleteItem"
+     OnSelectedIndexChanged="selectItem"
+     HeaderStyle.BackColor="#74A846"
+     ItemStyle.BackColor="#E6ECFF"
+     AlternatingItemStyle.BackColor="#FFFFFF"
+     EditItemStyle.BackColor="#E4E4E4"
+     SelectedItemStyle.BackColor="lightyellow"
+>
+
+ <!--
+	ItemStyle.width="470px"
+	AlternatingItemStyle.width="470px" 
+	HeaderStyle.ForeColor="white" 
+ -->
+
+<prop:HeaderTemplate>
+<table style="width=520px;padding:0px;margin:0px;">
+<tr align="left"> 
+   <th width="440px">Datos</th> 
+   <th width="80px">Opciones</th> 
+</tr>
+</table> 
+</prop:HeaderTemplate>
+
+<prop:ItemTemplate>
+<table style="width=520px;padding:0px;margin:0px;">
+<tr>	 
+  <td width="440px">
+      <%#$this->DataItem['nombre']%> - 
+      <%#$this->DataItem['coordinador_nombre']%> - 
+	  <%#$this->DataItem['coordinador_id']%> - 
+	  <%#$this->DataItem['centro_nombre']%>.
+  </td>	  
+  <td width="80px">
+  <com:TImage ImageUrl="themes/Basic/punto_verde.png" Style="padding:0px;border-style:none;margin-left:10px;"  ImageAlign="middle" ToolTip="Editar" />
+  <com:TLinkButton Text="Editar" CommandName="edit" />
+  </td>
+</tr>
+</table>
+</prop:ItemTemplate>
+
+<prop:EditItemTemplate>
+<table>
+<tr>
+  <td>Nombre programa, l&iacute;nea tecnol&oacute;gica o subdivisi&oacute;n de coordinaci&oacute;n:</td>
+  <td><com:TTextBox
+           ID="nombre"
+           Text=<%#$this->DataItem['nombre'] %>
+           />
+  <com:TRequiredFieldValidator ControlToValidate="nombre" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />
+  <com:TRegularExpressionValidator ControlToValidate="nombre" RegularExpression="^[A-Za-záéíóúñÁÉÍÓÚÑ ]*$" Display="Dynamic" ErrorMessage="Solo letras." ValidationGroup="Group1" />
+  </td>
+</tr>
+<tr>
+  <td>Coordinador Nombre:</td>
+  <td><com:TTextBox
+           ID="coordinador_nombre"
+           Text=<%#$this->DataItem['coordinador_nombre'] %>
+           />
+  <com:TRequiredFieldValidator ControlToValidate="coordinador_nombre" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />
+  <com:TRegularExpressionValidator ControlToValidate="coordinador_nombre" RegularExpression="^[A-Za-záéíóúñÁÉÍÓÚÑ ]*$" Display="Dynamic" ErrorMessage="Solo letras." ValidationGroup="Group1" />
+  </td>
+</tr>
+<tr>
+  <td>Coordinador identificaci&oacute;n:</td>
+  <td><com:TTextBox
+           ID="coordinador_id"
+           Text=<%#$this->DataItem['coordinador_id'] %>
+           />
+  <com:TRequiredFieldValidator ControlToValidate="coordinador_id" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />
+  <com:TDataTypeValidator ControlToValidate="coordinador_id" DataType="Integer" Display="Dynamic" ErrorMessage="Solo numeros." ValidationGroup="Group1" />
+  </td>
+</tr>
+<tr>
+  <td>Identificaci&oacute;n tipo:</td>
+  <td>
+   <com:TDropDownList ID="coordinador_id_tipo"
+	Width="200px"
+    SelectedValue=<%#$this->DataItem['coordinador_id_tipo'] %> >
+    <com:TListItem Value="CC" />
+    <com:TListItem Value="TI" />
+    <com:TListItem Value="NIT" />
+    </com:TDropDownList>
+   </td>
+</tr>
+
+
+
+<tr>
+  <td>Ambiente para comit&eacute;s:</td>
+  <td><com:TTextBox
+           ID="ambiente_comites"
+           Text=<%#$this->DataItem['ambiente_comites'] %>
+           />
+  <com:TRequiredFieldValidator ControlToValidate="ambiente_comites" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />
+  </td>
+</tr>
+
+<tr>
+  <td colspan="2" align="right">
+    <br/>
+    <com:TImage ImageUrl="themes/Basic/punto_azul.png" Style="padding:0px;border-style:none;margin-left:10px;"  ImageAlign="middle" ToolTip="Guardar" />
+	<com:TLinkButton Text="Guardar" CommandName="update" ValidationGroup="Group1" />
+    <com:TImage ImageUrl="themes/Basic/punto_rojo.png" Style="padding:0px;border-style:none;margin-left:10px;"  ImageAlign="middle" ToolTip="Cancelar" />
+	<com:TLinkButton Text="Cancelar" CommandName="cancel" />
+  </td>
+</tr>
+</table>
+</prop:EditItemTemplate>
+
+</com:TDataList>
+
+	<br />
+   	<com:TActiveLabel ID="mensajes" Text=""></com:TActiveLabel>
+	<com:TActiveLabel ID="alertas" Text=""></com:TActiveLabel>
+	<br /><br />
+	<!-- <com:TJavascriptLogger /> -->
+  
+</com:TContent>
+
+<com:TContent ID="informacion">
+   <com:TLabel ID="usuario"  Text="<b>Usuario:</b> Ninguno." />
+</com:TContent>
+
+

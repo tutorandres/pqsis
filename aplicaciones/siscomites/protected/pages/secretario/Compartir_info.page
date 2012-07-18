@@ -1,0 +1,54 @@
+
+<com:TContent ID="Main">
+
+	 <br/><br/><h1>COMPARTIR INFORMACI&Oacute;N</h1><br/>
+   
+	<br/><br/><br/>
+	
+	<com:TPanel GroupingText="Informaci&oacute;n" Width="550px" Style="padding:10px;border-style:none;margin-left:40px;">
+    
+
+	<com:TTable CellSpacing="10" Width="540px" CellPadding="10" HorizontalAlign="Left">				  
+			  
+			  <com:TTableRow>
+                <com:TTableCell Width="530px">
+					<a target="_blank" href="http://revisor.com.ar">Abrir Corrector Ortogr&aacute;fico Online (Copie y pege su texto)</a>
+					<com:THtmlArea ID="info" EnableVisualEdit="false" Width="520px" Height="300px" />
+                </com:TTableCell>
+              </com:TTableRow>			  
+
+			  <com:TTableRow> 
+				<com:TTableCell Width="490px">
+			    
+				<com:TImage ImageUrl="themes/Basic/punto_azul.png" Style="padding:0px;border-style:none;margin-left:10px;"  ImageAlign="middle" ToolTip="Guardar" />
+				<com:TLinkButton ID="guardar" Text="Guardar" OnCommand="guardar" />	
+
+				<com:TImage ImageUrl="themes/Basic/punto_amarillo.png" Style="padding:0px;border-style:none;margin-left:1px;"  ImageAlign="middle" ToolTip="Actualizar" />				
+				<com:THyperLink
+				    NavigateUrl="<%=$this->Service->constructUrl('secretario.Compartir_info')%>"
+					Text="Actualizar"
+				/>	
+				
+				
+			    </com:TTableCell>
+			  </com:TTableRow>			  
+      </com:TTable>
+	  
+      </com:TPanel>
+    
+	<br /> 
+	<com:TActivePanel id="DataPanel">
+	<com:TActiveLabel ID="mensajes" Text=""></com:TActiveLabel>
+	<com:TActiveLabel ID="alertas" Text="" BackColor="#FFFFFF" ></com:TActiveLabel>
+	<br/><br/> 
+	  
+	
+	<!-- <com:TJavascriptLogger />  -->
+    </com:TActivePanel>		 
+  
+	 
+  
+</com:TContent>
+
+
+

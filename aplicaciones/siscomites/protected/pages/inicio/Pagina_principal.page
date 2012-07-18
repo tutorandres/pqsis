@@ -1,0 +1,29 @@
+
+<com:TContent ID="contenido">
+<h1>BIENVENIDOS</h1>
+<p>El Software SIScomites consolida toda la informaci&oacute;n  
+generada del proceso de seguimiento y evaluaci&oacute;n que realizan los 
+instructores para la aplicaci&oacute;n del reglamento del aprendiz y 
+aseguramiento del debido proceso en la formaci&oacute;n que imparte el SENA.</p>
+
+<p><b>LOS USUARIOS DEL SOFTWARE SON:</b> <br /><br />
+<b>INTRUCTOR O QUEJOSO:</b> Persona encargada de reportar el caso con detalles 
+y pruebas que faciliten al comit&eacute; de evaluaci&oacute;n y seguimiento tomar la 
+decisi&oacute;n m&aacute;s acertada para cada caso aplicando los principios
+y condiciones del reglamento del aprendiz SENA. Por seguridad 
+&eacute;ste perfil requiere iniciar sesi&oacute;n.<br /></p>
+
+
+<p><b>SECRETARIO DE COMIT&Eacute;:</b> Funcionario encargado de
+crear sesiones y enviar citaciones para tratar todos los casos extraordinarios 
+informados por los quejosos y que est&aacute;n pendientes por resolver. 
+Este rol exige iniciar sesi&oacute;n en el 
+sistema identific&aacute;ndose con usuario y contrase&ntilde;a.
+</p>
+
+</com:TContent>
+
+
+<com:TContent ID="informacion">
+   <com:TLabel ID="usuario"  Text="<b>Usuario:</b> Ninguno." />
+</com:TContent>

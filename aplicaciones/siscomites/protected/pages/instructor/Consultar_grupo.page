@@ -1,0 +1,127 @@
+<com:TContent ID="contenido">
+
+    <h1>CONSULTA DE CASOS E INFORMES GENERALES POR GRUPO</h1>
+	<br />
+     	
+    <com:TPanel GroupingText="Busqueda de casos e informes generales" Width="500px">
+    
+	<br/>
+	
+	<com:TTable>
+              <com:TTableRow>
+                <com:TTableCell>
+                    <com:TLabel ID="Label1" Text="Grupo de formaci&oacute;n:" ForControl="grupos" />
+                </com:TTableCell>
+                <com:TTableCell>
+
+				<com:TDropDownList ID="grupos" Width="300px" />
+                <com:TRequiredFieldValidator ControlToValidate="grupos" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />
+
+			   </com:TTableCell>
+              </com:TTableRow>
+    
+	
+			<com:TTableRow>	
+				<com:TTableCell>
+				</com:TTableCell>
+				
+				<com:TTableCell>
+				<br/>
+				<com:TImage ImageUrl="themes/Basic/punto_azul.png" Style="padding:0px;border-style:none;margin-left:60px;"  ImageAlign="middle" ToolTip="Consultar" /> 
+				<com:TActiveLinkButton
+				Text="Consultar"
+				Font.Size="12pt"
+				ValidationGroup="Group1"
+				OnCallback="busqueda"
+				ActiveControl.CallbackParameter="value">
+				<prop:ClientSide 
+				OnLoading="Element.show('callback_image');"  
+				OnComplete="Element.hide('callback_image');" 
+				/>	
+				</com:TActiveLinkButton>
+				<span id="callback_image" style="display:none">Enviando...<img src="themes/Basic/loading.gif" alt="Cargando"/></span>
+				</com:TTableCell>
+				
+			</com:TTableRow>
+	</com:TTable>
+	
+	<br/>
+	
+	</com:TPanel>
+	<com:TActivePanel id="DataPanel">
+	
+	<br/>
+	<com:TActiveLabel ID="mensajes" Text=""></com:TActiveLabel>
+	<com:TActiveLabel ID="alertas" Text=""></com:TActiveLabel>
+	
+	
+	<div style="width:510px">
+	<br/>
+	
+	 <com:TDataList
+		 ID="DataList"
+		 AllowPaging="true"
+		 PageSize="5"
+		 HeaderStyle.BackColor="#74A846"
+		 ItemStyle.BackColor="#E6ECFF"
+		 AlternatingItemStyle.BackColor="#FFFFFF"
+		 EditItemStyle.BackColor="#E4E4E4"
+		 SelectedItemStyle.BackColor="lightyellow"
+		 EnableViewState="true"
+	 >
+		
+		
+    <prop:HeaderTemplate>
+	<table style="width=510px;padding:0px;margin:0px;">
+	<tr align="left"> 
+	   <th width="60px">Fecha</th> 
+	   <th width="100px">Aprendiz</th> 
+	   <th width="100px">Tipificaci&oacute;n</th> 
+	   <th width="150px">Quejoso</th>
+	   <th width="100px">Estado</th> 
+	</tr>
+	</table> 
+	</prop:HeaderTemplate>
+			
+			
+	<prop:ItemTemplate>
+	<table style="width=510px;padding:0px;margin:0px;">
+	<tr>
+	  <td width="60px"><%#$this->DataItem['fecha']%></td>	 
+	  <td width="100px"><%#$this->DataItem['aprendiz']%></td>
+	  <td width="100px"><%#$this->DataItem['tipificacion']%></td>
+	  <td width="150px"><%#$this->DataItem['quejoso']%></td>
+	  <td width="100px"><%#$this->DataItem['estado']%></td>
+	</tr>
+	</table>
+    </prop:ItemTemplate>	
+
+	
+	</com:TDataList>
+	<div class="info_paginacion"  align="left">
+		<com:TLabel ID="paginacion" Text="">
+		</com:TLabel> 
+		
+		<com:TPager 
+			ID="Pager"
+			ControlToPaginate="DataList"
+			Mode="Numeric"
+			ButtonType="PushButton"
+			PageButtonCount="3"
+			OnPageIndexChanged="pageChanged"
+	    />
+	</div>
+	
+	</div>	
+	</com:TActivePanel>	
+	
+	<!--  <com:TJavascriptLogger />   -->
+	
+	
+</com:TContent>
+
+
+
+<com:TContent ID="informacion">
+   <com:TLabel ID="usuario"  Text="<b>Usuario:</b> Ninguno." />
+</com:TContent>

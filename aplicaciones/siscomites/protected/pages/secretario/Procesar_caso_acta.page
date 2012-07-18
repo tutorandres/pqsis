@@ -1,0 +1,338 @@
+
+
+<com:TContent ID="Main">
+
+	 <h1>SISCOMITES</h1>
+	 <h1>PROCESAR CASO ACTA</h1>
+   
+	
+	<com:TActivePanel id="DataPanel">
+	
+	<div style="padding:30px;margin:30px;">
+
+	<br />
+	<com:TActiveLabel ID="mensajes" Text=""></com:TActiveLabel>
+	<com:TActiveLabel ID="alertas" Text="" BackColor="#FFFFFF" ></com:TActiveLabel>
+	
+
+	<com:TPanel GroupingText="Procesar caso acta" Width="700px">
+    <com:TTable CellSpacing="5" Width="650px" CellPadding="5" HorizontalAlign="Left">		
+			  
+			  
+			  <com:TTableRow>
+                <com:TTableCell Width="350px">
+                    <com:TLabel ID="Label1" Text="Codigo:" ForControl="decision_id" />
+                </com:TTableCell>
+                <com:TTableCell Width="300px">
+                    <com:TTextBox ReadOnly="true" BackColor="#E6E6E6" ID="decision_id" Width="200px"/><br/>
+                </com:TTableCell>
+              </com:TTableRow>
+	
+	
+		      <com:TTableRow>
+				 <com:TTableCell Width="350px">
+                    <com:TLabel ID="Label2" Text="Descargos:" ForControl="descargo" />
+					<a target="_blank" href="http://revisor.com.ar">Abrir Corrector Ortogr&aacute;fico Online (Copie y pege su texto)</a>
+				 </com:TTableCell>
+				 <com:TTableCell Width="300px">
+							<com:THtmlArea ID="descargo" EnableVisualEdit="false" Width="300px" Height="200px" />
+							<com:TRequiredFieldValidator ControlToValidate="descargo" Display="Dynamic" ErrorMessage="Falta los descargos." ValidationGroup="Group1" />
+				 </com:TTableCell>
+			  </com:TTableRow>
+	
+			 
+			 <com:TTableRow>
+			    <com:TTableCell Width="350px">
+                    <com:TLabel ID="Label3" Text="Establecer la existencia de la conducta" ForControl="existencia" />
+                </com:TTableCell>
+				<com:TTableCell Width="300px">
+					<com:TDropDownList ID="existencia" Width="100px">
+					<com:TListItem Value="Si" Text="Si"/>
+					<com:TListItem Value="No" Text="No"/>
+					</com:TDropDownList>
+			    </com:TTableCell>
+			  </com:TTableRow>	
+	
+	
+			<com:TTableRow>
+			    <com:TTableCell Width="350px">
+                    <com:TLabel ID="Label4" Text="Establecer si constituye una falta" ForControl="constituye" />
+                </com:TTableCell>
+				<com:TTableCell Width="300px">
+					<com:TDropDownList ID="constituye" Width="100px">
+					<com:TListItem Value="Si" Text="Si"/>
+					<com:TListItem Value="No" Text="No"/>
+					</com:TDropDownList>
+			    </com:TTableCell>
+			  </com:TTableRow>	
+	
+	
+			  <com:TTableRow>
+			    <com:TTableCell Width="350px">
+                    <com:TLabel ID="Label5" Text="Establecer si esta probado el autor de la misma" ForControl="probable" />
+                </com:TTableCell>
+				<com:TTableCell Width="300px">
+					<com:TDropDownList ID="probable" Width="100px">
+					<com:TListItem Value="Si" Text="Si"/>
+					<com:TListItem Value="No" Text="No"/>
+					</com:TDropDownList>
+			    </com:TTableCell>
+			  </com:TTableRow>	
+	
+	
+			  <com:TTableRow>
+			    <com:TTableCell Width="350px">
+                    <com:TLabel ID="Label6" Text="Establecer el grado de responsabilidad" ForControl="responsabilidad" />
+                </com:TTableCell>
+				<com:TTableCell Width="300px">
+					<com:TDropDownList ID="responsabilidad" Width="100px">
+					<com:TListItem Value="Alto" Text="Alto"/>
+					<com:TListItem Value="Bajo" Text="Bajo"/>
+					</com:TDropDownList>
+			    </com:TTableCell>
+			  </com:TTableRow>	
+			  
+	
+	
+			<com:TTableRow>
+			    <com:TTableCell Width="350px">
+                    <com:TLabel ID="Label7" Text="Establecer los daños causados y sus efectos" ForControl="danos" />
+                </com:TTableCell>
+				<com:TTableCell Width="300px">
+					<com:TDropDownList ID="danos" Width="200px">
+					<com:TListItem Value="Su formación" Text="Su formación"/>
+					<com:TListItem Value="Su formación y grupo" Text="Su formación y grupo"/>
+					<com:TListItem Value="Su formación e instructores" Text="Su formación e instructores"/>
+					<com:TListItem Value="Su formación y la institución" Text="Su formación y la institución"/>
+					</com:TDropDownList>
+			    </com:TTableCell>
+			  </com:TTableRow>	
+	
+	
+			 
+			 <com:TTableRow>
+			    <com:TTableCell Width="350px">
+                    <com:TLabel ID="Label8" Text="Establecer el grado de participacion" ForControl="participacion" />
+                </com:TTableCell>
+				<com:TTableCell Width="300px">
+					<com:TDropDownList ID="participacion" Width="100px">
+					<com:TListItem Value="Alto" Text="Alto"/>
+					<com:TListItem Value="Bajo" Text="Bajo"/>
+					</com:TDropDownList>
+			    </com:TTableCell>
+			  </com:TTableRow>	
+	
+			   
+			  <com:TTableRow>
+			    <com:TTableCell Width="350px">
+                    <com:TLabel ID="Label9" Text="Establecer los antecedentes del aprendiz" ForControl="antecedente" />
+                </com:TTableCell>
+				<com:TTableCell Width="300px">
+					<com:TDropDownList ID="antecedente" Width="300px">
+					<com:TListItem Value="Ruta de aprendizaje en sofiaplus" Text="Ruta de aprendizaje en sofiaplus"/>
+					<com:TListItem Value="Informe de seguimiento" Text="Informe de seguimiento"/>
+					<com:TListItem Value="Anotaciones en ficha de seguimiento" Text="Anotaciones en ficha de seguimiento"/>
+					<com:TListItem Value="Anotaciones, planes de mejoramiento" Text="Anotaciones, planes de mejoramiento"/>
+					<com:TListItem Value="Anotaciones, planes de mejoramiento, condicionamientos" Text="Anotaciones, planes de mejoramiento, condicionamientos"/>
+					</com:TDropDownList>
+			    </com:TTableCell>
+			  </com:TTableRow>	
+				
+
+				
+			<com:TTableRow>
+			    <com:TTableCell Width="350px">
+                    <com:TLabel ID="Label10" Text="Establecer el rendimiento del aprendiz en su proceso de formación" ForControl="rendimiento" />
+                    <p style="color:white; background-color:#74DF00"> * Importante establecer el estado general del aprendiz.</p>
+				</com:TTableCell>
+				<com:TTableCell Width="300px">
+					<com:TDropDownList ID="rendimiento" Width="100px">
+					<com:TListItem Value="Regular" Text="Regular"/>
+					<com:TListItem Value="Bueno" Text="Bueno"/>
+					<com:TListItem Value="Excelente" Text="Excelente"/>
+					</com:TDropDownList>
+			    </com:TTableCell>
+			  </com:TTableRow>		
+				
+				
+				
+			 <com:TTableRow>
+			    <com:TTableCell Width="350px">
+                    <com:TLabel ID="Label11" Text="Establecer si el aprendiz confeso las faltas" ForControl="confeso" />
+					<p style="color:white; background-color:#74DF00"> * Establecer a NO en caso de que el aprendiz no se haya presentado.</p>
+                </com:TTableCell>
+				<com:TTableCell Width="300px">
+					<com:TDropDownList ID="confeso" Width="100px">
+					<com:TListItem Value="Si" Text="Si"/>
+					<com:TListItem Value="No" Text="No"/>
+					</com:TDropDownList>
+			    </com:TTableCell>
+			  </com:TTableRow>		
+				
+				
+				
+			 <com:TTableRow>
+			    <com:TTableCell Width="350px">
+                    <com:TLabel ID="Label12" Text="Establecer si el aprendiz procuro, por iniciativa propia resarcir
+					el daño causado o compensar el perjuicio causado" ForControl="procuro" />
+                </com:TTableCell>
+				<com:TTableCell Width="300px">
+					<com:TDropDownList ID="procuro" Width="100px">
+					<com:TListItem Value="Si" Text="Si"/>
+					<com:TListItem Value="No" Text="No"/>
+					</com:TDropDownList>
+			    </com:TTableCell>
+			  </com:TTableRow>			
+				
+			
+			 <com:TTableRow>
+			    <com:TTableCell Width="350px">
+                    <com:TLabel ID="Label13" Text="Establecer si el aprendiz devolvio, restituyo o reparo, el bien
+					afectado con la conducta" ForControl="reparo" />
+                </com:TTableCell>
+				<com:TTableCell Width="300px">
+					<com:TDropDownList ID="reparo" Width="100px">
+					<com:TListItem Value="No aplica" Text="No aplica"/>
+					<com:TListItem Value="Si existió" Text="Si existió"/>
+					<com:TListItem Value="No existió" Text="No existió"/>
+					</com:TDropDownList>
+			    </com:TTableCell>
+			  </com:TTableRow>					
+
+
+			 <com:TTableRow>
+			    <com:TTableCell Width="350px">
+                    <com:TLabel ID="Label14" Text="Establecer el grado de calificacion de la falta" ForControl="calificacion" />
+                </com:TTableCell>
+				<com:TTableCell Width="300px">
+					<com:TDropDownList ID="calificacion" Width="100px">
+					<com:TListItem Value="Grave" Text="Grave"/>
+					<com:TListItem Value="Leve" Text="Leve"/>
+					<com:TListItem Value="Gravísima" Text="Gravísima"/>
+					</com:TDropDownList>
+			    </com:TTableCell>
+			  </com:TTableRow>					  
+							  
+			  
+			  <com:TTableRow>
+			    <com:TTableCell Width="350px">
+                    <com:TLabel ID="Label16" Text="Establecer si amerita recomendar una sancion" ForControl="amerita" />
+                </com:TTableCell>
+				<com:TTableCell Width="300px">
+					<com:TDropDownList ID="amerita" Width="100px">
+					<com:TListItem Value="Si" Text="Si"/>
+					<com:TListItem Value="No" Text="No"/>
+					</com:TDropDownList>
+			    </com:TTableCell>
+			  </com:TTableRow>
+			  
+			  
+			  <com:TTableRow>
+			    <com:TTableCell Width="350px">
+                    <com:TLabel ID="Label17" Text="Establecer la sancion recomendada:" ForControl="sancion_id" />
+                </com:TTableCell>
+				<com:TTableCell Width="300px">
+					<com:TDropDownList ID="sancion_id" Width="200px" />
+			    </com:TTableCell>
+			  </com:TTableRow>
+			  
+			  
+			  <com:TTableRow>
+			    <com:TTableCell Width="350px">
+                    <com:TLabel ID="Label20" Text="Si es cancelación determinar la duración:" ForControl="duracion" />
+                </com:TTableCell>
+				<com:TTableCell Width="300px">
+					<com:TDropDownList ID="duracion" Width="100px">
+					<com:TListItem Value="24 Meses" Text="24 Meses"/>
+					<com:TListItem Value="18 Meses" Text="18 Meses"/>
+					<com:TListItem Value="12 Meses" Text="12 Meses"/>
+					<com:TListItem Value="6 Meses" Text="6 Meses"/>
+					</com:TDropDownList>
+			    </com:TTableCell>
+			  </com:TTableRow>
+			  
+			  
+			  <com:TTableRow>
+			    <com:TTableCell Width="350px">
+                    <com:TLabel ID="Label18" Text="Establecer el reglamento que aplica al caso" ForControl="reglamentos" />
+<!--					<h3><a target="_blank" href="index.php?page=usuarios.Usuario_reglamento_sancion">Clic Aqui Para Ver Detalles De Cada Sanci&oacute;n</a></h3>-->
+                </com:TTableCell>
+				<com:TTableCell Width="300px">
+					
+				   <com:TCheckBoxList 
+				   ID="reglamentos" 
+				   DataValueField="id" 
+				   DataTextField="nombre" 
+				   RepeatLayout="Raw" 
+				   RepeatDirection="Vertical" 
+				   TextAlign="Left" 
+			       />
+				   
+			     </com:TTableCell>
+			    </com:TTableRow>
+			  
+
+			 <com:TTableRow>
+                <com:TTableCell Width="350px">
+                    <com:TLabel ID="Label19" Text="Responsable:" ForControl="responsable" />
+                </com:TTableCell>
+                <com:TTableCell Width="300px">
+                    <com:TTextBox ID="responsable" Width="200px"/>
+					<com:TRegularExpressionValidator  ControlToValidate="responsable" RegularExpression="^[A-Za-záéíóúñÁÉÍÓÚÑ ]*$" Display="Dynamic" ErrorMessage="En responsable solo letras." ValidationGroup="Group1" />
+					<com:TRequiredFieldValidator ControlToValidate="responsable" Display="Dynamic" ErrorMessage="Falta el responsable." ValidationGroup="Group1" />
+			   </com:TTableCell>
+              </com:TTableRow>
+			  
+			  
+			  <com:TTableRow>
+			    <com:TTableCell Width="350px">
+                    <com:TLabel ID="Label15" Text="Establecer si se realizo el analisis del caso" ForControl="incluir" />
+                </com:TTableCell>
+				<com:TTableCell Width="300px">
+					<com:TDropDownList ID="incluir" Width="100px">
+					<com:TListItem Value="Si" Text="Si"/>
+					<com:TListItem Value="No" Text="No"/>
+					</com:TDropDownList>
+			    </com:TTableCell>
+			  </com:TTableRow>
+			  
+			  
+			  
+			  <com:TTableRow> 
+			    <com:TTableCell Width="350px">
+                </com:TTableCell>
+				<com:TTableCell Width="300px">
+				<com:TImage ImageUrl="themes/Basic/punto_azul.png" Style="padding:0px;border-style:none;margin-left:10px;"  ImageAlign="middle" ToolTip="Guardar" />
+				<com:TLinkButton Text="Guardar" OnCommand="guardar" ValidationGroup="Group1" />				
+				<com:TImage ImageUrl="themes/Basic/punto_rojo.png" Style="padding:0px;border-style:none;margin-left:10px;"  ImageAlign="middle" ToolTip="Cerrar" />
+				<com:TLinkButton Text="Cerrar" Attributes.onclick="window.close();"/>
+			    </com:TTableCell>
+			  </com:TTableRow>	
+
+
+			  <com:TTableRow> 
+			    <com:TTableCell Width="350px">
+                
+				<com:TValidationSummary
+				ValidationGroup="Group1"
+				AutoUpdate="true"
+				Display="None"
+				ShowMessageBox="true"
+				HeaderText="Resumen de errores:" />
+				
+				</com:TTableCell>
+			  </com:TTableRow>	
+			
+			  
+      </com:TTable>
+      </com:TPanel>
+      <br />
+	
+	</div>
+	
+	<!-- <com:TJavascriptLogger />  -->
+    </com:TActivePanel>		 
+  
+</com:TContent>
+
+

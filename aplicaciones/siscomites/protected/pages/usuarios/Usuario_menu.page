@@ -1,0 +1,34 @@
+
+<com:TContent ID="contenido">
+<h1>ADMINISTRACI&Oacute;N</h1>
+
+<p style="text-align:justify">
+
+Dependiendo del tipo de usuario podr&aacute; modificar:<br/><br/>
+<b>REGIONALES:</b> Disctribuci&oacute;n de acuerdo a la estructura del SENA.<br/><br/>
+<b>CENTROS:</b> Distribuci&oacute;n de centros de acuerdo a la estructura del SENA.<br/><br/>
+<b>PROGRAMAS:</b> Distribuci&oacute;n de programas de acuerdo a la estructura del SENA.<br/><br/>
+<b>GRUPOS:</b> Cada programa tiene su propia oferta y titulaciones.<br/><br/>
+<b>TRIMESTRES:</b> Clasificaci&oacute;n de los per&iacute;odos del a&ntilde;o.<br/><br/>
+<b>SESIONES:</b> Agrupaci&oacute;n de casos para ser tratados por el comit&eacute;.<br/><br/>
+<b>COMIT&Eacute;S:</b> An&aacute;lisis espec&iacute;fico que se le realiza a un grupo. Cada comit&eacute; genera un acta.<br/><br/>
+<b>ASISTENTES COMUNES:</b> Los integrantes que deben estar en los comit&eacute;s
+de evaluaci&oacute;n y seguimiento seg&uacute;n el reglamento del aprendiz SENA.<br/><br/>
+<b>B&Uacute;SQUEDAS:</b> Se puede buscar actas anteriores, casos y quejosos.<br/><br/>
+<b>REPORTES Y ESTAD&Iacute;STICAS:</b> Reportes administrativos de comit&eacute;s, trimestres y 
+a&ntilde;os.<br/>
+
+</p>
+<br /><br /><br /><br /><br />
+
+<!-- <com:TJavascriptLogger /> -->
+	
+
+</com:TContent>
+
+
+<com:TContent ID="informacion">
+   <com:TLabel ID="usuario"  Text="<b>Usuario:</b> Ninguno." />
+</com:TContent>
+
+

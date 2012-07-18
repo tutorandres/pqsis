@@ -1,0 +1,156 @@
+
+
+<com:TContent ID="contenido">
+
+ <h1>LISTADO DE INTEGRANTES COMUNES</h1>
+ <br />
+
+
+<com:TDataList
+     ID="DataList"
+     DataKeyField="id"
+	 AllowPaging="false"
+     OnEditCommand="editItem"
+     OnCancelCommand="cancelItem"
+     OnUpdateCommand="updateItem"
+     OnDeleteCommand="deleteItem"
+     OnSelectedIndexChanged="selectItem"
+     HeaderStyle.BackColor="#74A846"
+     ItemStyle.BackColor="#E6ECFF"
+     AlternatingItemStyle.BackColor="#FFFFFF"
+     EditItemStyle.BackColor="#E4E4E4"
+     SelectedItemStyle.BackColor="lightyellow">
+ 
+ 
+ <!--
+    
+	ItemStyle.width="470px"
+	AlternatingItemStyle.width="470px" 
+	HeaderStyle.ForeColor="white" 
+ 
+ -->
+ 
+<prop:HeaderTemplate>
+<table style="width=520px;padding:0px;margin:0px;">
+<tr align="left"> 
+   <th width="70px">C&oacute;digo</th> 
+   <th width="350px">Datos</th> 
+   <th width="100px">Opciones</th> 
+</tr>
+</table> 
+</prop:HeaderTemplate>
+<prop:ItemTemplate>
+<table style="width=520px;padding:0px;margin:0px;">
+<tr>
+  <td width="70px"><%#$this->DataItem['id']%></td>	 
+  <td width="350px">
+      <%#$this->DataItem['nombre']%> - 
+      <%#$this->DataItem['rol']%> - 
+	  <%#$this->DataItem['entidad']%> -
+	  <%#$this->DataItem['numero']%> -
+	  <%#$this->DataItem['correo']%>
+  </td>	  
+  <td width="100px">
+  <com:TImage ImageUrl="themes/Basic/punto_verde.png" Style="padding:0px;border-style:none;margin-left:10px;"  ImageAlign="middle" ToolTip="Editar" />
+  <com:TLinkButton Text="Editar" CommandName="edit" />
+  <com:TImage ImageUrl="themes/Basic/punto_rojo.png" Style="padding:0px;border-style:none;margin-left:10px;"  ImageAlign="middle" ToolTip="Eliminar" />
+  <com:TLinkButton Text="Eliminar" CommandName="delete" Attributes.onclick="if(!confirm('Esta seguro?')) return false;"/>
+  </td>
+</tr>
+</table>
+</prop:ItemTemplate>
+ 
+ 
+ 
+<prop:EditItemTemplate>
+<table>
+<tr>
+  <td>Nombre:</td>
+  <td><com:TTextBox
+           ID="nombre"
+           Text=<%#$this->DataItem['nombre'] %>
+           />
+  <com:TRequiredFieldValidator ControlToValidate="nombre" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />
+  <com:TRegularExpressionValidator RegularExpression="^[A-Za-záéíóúñÁÉÍÓÚÑ ]*$" ControlToValidate="nombre" Display="Dynamic" ErrorMessage="Solo letras." ValidationGroup="Group1" />
+  </td>
+</tr>
+<tr>
+  <td>Rol:</td>
+  <td><com:TTextBox
+           ID="rol"
+           Text=<%#$this->DataItem['rol'] %>
+           />
+  <com:TRequiredFieldValidator ControlToValidate="rol" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />		   
+  </td>
+</tr>
+
+<tr>
+  <td>Entidad:</td>
+  <td><com:TTextBox
+           ID="entidad"
+           Text=<%#$this->DataItem['entidad'] %>
+           />
+  <com:TRequiredFieldValidator ControlToValidate="entidad" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />		   
+  </td>
+</tr>
+
+
+<tr>
+  <td>Numero de contacto:</td>
+  <td><com:TTextBox
+           ID="numero"
+           Text=<%#$this->DataItem['numero'] %>
+           />	   
+  </td>
+</tr>
+
+
+<tr>
+  <td>Correo:</td>
+  <td><com:TTextBox
+           ID="correo"
+           Text=<%#$this->DataItem['correo'] %>
+           />
+  <com:TRequiredFieldValidator ControlToValidate="correo" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />
+  <com:TRegularExpressionValidator  RegularExpression="^[\w-\.]+@([\w-]+\.)+[\w-]{2,8}$" ControlToValidate="correo" Display="Dynamic" ErrorMessage="Correo invalido." ValidationGroup="Group1" />
+  </td>
+</tr>
+<tr>
+  <td colspan="2" align="right">
+    <br/>	
+	<com:TImage ImageUrl="themes/Basic/punto_azul.png" Style="padding:0px;border-style:none;margin-left:10px;"  ImageAlign="middle" ToolTip="Guardar" />
+	<com:TLinkButton Text="Guardar" CommandName="update" ValidationGroup="Group1" />
+    <com:TImage ImageUrl="themes/Basic/punto_rojo.png" Style="padding:0px;border-style:none;margin-left:10px;"  ImageAlign="middle" ToolTip="Cancelar" />
+	<com:TLinkButton Text="Cancelar" CommandName="cancel" />
+  </td>
+</tr>
+</table>
+</prop:EditItemTemplate>
+
+</com:TDataList>
+
+<br />
+<table style="width=520px;padding:0px;margin:0px;">
+<tr>
+  <td>
+  <com:TImage ImageUrl="themes/Basic/punto_azul.png" Style="padding:0px;border-style:none;margin-left:10px;"  ImageAlign="middle" ToolTip="Agregar" />
+  <a href="index.php?page=secretario.Add_integrante">Agregar Integrante</a> 
+  </td>
+</tr>
+</table>
+
+<br />
+   	<com:TActiveLabel ID="mensajes" Text=""></com:TActiveLabel>
+	<com:TActiveLabel ID="alertas" Text=""></com:TActiveLabel>
+<br /><br />
+
+<!-- <com:TJavascriptLogger /> -->
+  
+</com:TContent>
+
+
+<com:TContent ID="informacion">
+   <com:TLabel ID="usuario"  Text="<b>Usuario:</b> Ninguno." />
+</com:TContent>
+
+

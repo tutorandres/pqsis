@@ -1,0 +1,161 @@
+
+
+<com:TContent ID="contenido">
+
+ <h1>LISTADO DE TIPIFICACIONES</h1>
+ <br />
+
+<com:TDataList
+     ID="DataList"
+     DataKeyField="id"
+	 AllowPaging="true"
+	 PageSize="5"
+     OnEditCommand="editItem"
+     OnCancelCommand="cancelItem"
+     OnUpdateCommand="updateItem"
+     OnDeleteCommand="deleteItem"
+     OnSelectedIndexChanged="selectItem"
+     HeaderStyle.BackColor="#74A846"
+     ItemStyle.BackColor="#E6ECFF"
+     AlternatingItemStyle.BackColor="#FFFFFF"
+     EditItemStyle.BackColor="#E4E4E4"
+     SelectedItemStyle.BackColor="lightyellow">
+ 
+ <!--
+	ItemStyle.width="470px"
+	AlternatingItemStyle.width="470px" 
+	HeaderStyle.ForeColor="white" 
+ -->
+ 
+<prop:HeaderTemplate>
+<table style="width=520px;padding:0px;margin:0px;">
+<tr align="left"> 
+   <th width="100px">Nombre</th> 
+   <th width="320px">Datos</th> 
+   <th width="100px">Opciones</th> 
+</tr>
+</table> 
+</prop:HeaderTemplate>
+
+<prop:ItemTemplate>
+<table style="width=520px;padding:0px;margin:0px;">
+<tr>
+  <td width="100px"><%#$this->DataItem['nombre']%></td>	 
+  <td width="320px">
+      <%#$this->DataItem['tipo_falta']%> - 
+      <%#$this->DataItem['nivel']%>
+  </td>	  
+  <td width="100px">
+  
+  <com:TImage ImageUrl="themes/Basic/punto_verde.png" Style="padding:0px;border-style:none;margin-left:10px;"  ImageAlign="middle" ToolTip="Editar" />
+  <com:TLinkButton Text="Editar" CommandName="edit" />
+  <com:TImage ImageUrl="themes/Basic/punto_rojo.png" Style="padding:0px;border-style:none;margin-left:10px;"  ImageAlign="middle" ToolTip="Eliminar" />
+  <com:TLinkButton Text="Eliminar" CommandName="delete" Attributes.onclick="if(!confirm('Esta seguro?')) return false;"/>  
+  
+  </td>
+</tr>
+</table>
+</prop:ItemTemplate>
+ 
+<prop:EditItemTemplate>
+<table>
+
+<tr>
+  <td>Nombre:</td>
+  <td><com:TTextBox
+           ID="nombre"
+           Text=<%#$this->DataItem['nombre'] %>
+           />
+  <com:TRequiredFieldValidator ControlToValidate="nombre" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />
+  <com:TRegularExpressionValidator ControlToValidate="nombre" RegularExpression="^[A-Za-záéíóúñÁÉÍÓÚÑ ]*$" Display="Dynamic" ErrorMessage="Solo letras." ValidationGroup="Group1" />
+  </td>
+</tr>
+
+<tr>
+  <td>Tipo Falta:</td>
+  <td>
+   <com:TDropDownList ID="tipo_falta"
+	Width="200px"
+    SelectedValue=<%#$this->DataItem['tipo_falta'] %> >
+    <com:TListItem  Text="Académica" />
+    <com:TListItem  Text="Disciplinaria"/>
+    </com:TDropDownList>
+   </td>
+</tr>
+
+<tr>
+  <td>Nivel:</td>
+  <td>
+   <com:TDropDownList ID="nivel"
+	Width="200px"
+    SelectedValue=<%#$this->DataItem['nivel'] %> >
+    <com:TListItem  Value="Leve" Text="Leve" />
+    <com:TListItem  Value="Grave" Text="Grave"/>
+	<com:TListItem  Value="Gravísima" Text="Gravísima" />
+    </com:TDropDownList>                     
+   </td>
+</tr>
+
+<tr>
+  <td>Reglamento aplicado:</td>
+  <td>
+	<com:THtmlArea ID="reglamento_aplicado"  Text=<%#$this->DataItem['reglamento_aplicado'] %>  EnableVisualEdit="false" Width="250px" Height="120px" />
+	<com:TRequiredFieldValidator ControlToValidate="reglamento_aplicado" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />
+   </td>
+</tr>
+			  
+<tr>
+  <td colspan="2" align="right">
+    <br/>
+  
+  	<com:TImage ImageUrl="themes/Basic/punto_azul.png" Style="padding:0px;border-style:none;margin-left:10px;"  ImageAlign="middle" ToolTip="Guardar" />
+	<com:TLinkButton Text="Guardar" CommandName="update" ValidationGroup="Group1" />
+    <com:TImage ImageUrl="themes/Basic/punto_rojo.png" Style="padding:0px;border-style:none;margin-left:10px;"  ImageAlign="middle" ToolTip="Cancelar" />
+	<com:TLinkButton Text="Cancelar" CommandName="cancel" />	
+  
+  </td>
+</tr>
+
+</table>
+</prop:EditItemTemplate>
+
+
+</com:TDataList>
+
+<br />
+
+<div class="info_paginacion" align="left">
+<com:TLabel ID="paginacion" Text=""></com:TLabel> 
+<com:TPager ID="Pager"
+    ControlToPaginate="DataList"
+    Mode="Numeric"
+	ButtonType="PushButton"
+	PageButtonCount="3"
+    OnPageIndexChanged="pageChanged"
+/>
+</div>
+
+<br />
+		
+<table style="width=520px;padding:0px;margin:0px;">
+<tr><td>
+<com:TImage ImageUrl="themes/Basic/punto_naranja.png" Style="padding:0px;border-style:none;margin-left:10px;"  ImageAlign="middle" ToolTip="Agregar" />
+<a href="index.php?page=secretario.Add_tipificacion">Agregar Tipificaci&oacute;n</a> 
+</td></tr>
+</table>
+
+<br />
+<com:TActiveLabel ID="mensajes" Text=""></com:TActiveLabel>
+<com:TActiveLabel ID="alertas" Text=""></com:TActiveLabel>
+<br /><br />
+	
+<!-- <com:TJavascriptLogger /> -->
+  
+</com:TContent>
+
+
+<com:TContent ID="informacion">
+   <com:TLabel ID="usuario"  Text="<b>Usuario:</b> Ninguno." />
+</com:TContent>
+
+

@@ -1,0 +1,87 @@
+
+
+<com:TContent ID="Main">
+
+	 <h1>SISCOMITES</h1>
+	 <h1>COMPROMISOS EXTRAS</h1>
+   
+	
+	<com:TActivePanel id="DataPanel">
+	
+	<div style="padding:10px;margin:20px;">
+
+	<br />
+	<com:TActiveLabel ID="mensajes" Text=""></com:TActiveLabel>
+	<com:TActiveLabel ID="alertas" Text="" BackColor="#FFFFFF" ></com:TActiveLabel>
+	
+
+	<com:TPanel GroupingText="Modificar Compromiso" Width="700px">
+    <com:TTable CellSpacing="5" Width="650px" CellPadding="5" HorizontalAlign="Left">		
+			  
+			  
+			  <com:TTableRow>
+                <com:TTableCell Width="200px">
+                    <com:TLabel ID="Label4" Text="Codigo:" ForControl="compromiso_id" />
+                </com:TTableCell>
+                <com:TTableCell Width="450px">
+                    <com:TTextBox ReadOnly="true" BackColor="#E6E6E6" ID="compromiso_id" Width="200px"/><br/>
+                </com:TTableCell>
+              </com:TTableRow>
+	
+              <com:TTableRow>
+                <com:TTableCell Width="200px">
+                    <com:TLabel ID="Label5" Text="Responsables:" ForControl="responsables" />
+                </com:TTableCell>
+                <com:TTableCell Width="450px">
+                    <com:TTextBox ID="responsables" Width="200px"/><br/>
+					<com:TRequiredFieldValidator ControlToValidate="responsables" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />
+			   </com:TTableCell>
+              </com:TTableRow>
+			  
+			  
+			   	 <com:TTableRow>
+				 <com:TTableCell Width="200px">
+                    <com:TLabel ID="Label18" Text="Descipci&oacute;n:" ForControl="descripcion" />
+				 </com:TTableCell>
+				 <com:TTableCell Width="500px">
+							<com:THtmlArea ID="descripcion" EnableVisualEdit="false" Width="200px" Height="150px" />
+							<com:TRequiredFieldValidator ControlToValidate="descripcion" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />
+				 </com:TTableCell>
+				 </com:TTableRow>
+			  
+			  
+			  <com:TTableRow>
+                <com:TTableCell Width="200px">
+                    <com:TLabel ID="Label3" Text="Fecha:" ForControl="fecha" />
+                </com:TTableCell>
+                <com:TTableCell Width="450px">			   
+					<com:TDatePicker ID="fecha" DateFormat="yyyy-MM-dd" Culture="es" InputMode="DropDownList" Mode="Basic" CssClass="calendarstyle" />		   
+			   </com:TTableCell>
+              </com:TTableRow>
+			  
+
+			  <com:TTableRow> 
+			    <com:TTableCell Width="200px">
+                </com:TTableCell>
+				<com:TTableCell Width="450px">
+				
+				<com:TImage ImageUrl="themes/Basic/punto_azul.png" Style="padding:0px;border-style:none;margin-left:10px;"  ImageAlign="middle" ToolTip="Guardar" />
+				<com:TLinkButton Text="Guardar" OnCommand="guardar" ValidationGroup="Group1" />				
+				<com:TImage ImageUrl="themes/Basic/punto_rojo.png" Style="padding:0px;border-style:none;margin-left:10px;"  ImageAlign="middle" ToolTip="Cerrar" />
+				<com:TLinkButton Text="Cerrar" Attributes.onclick="window.close();"/>
+ 
+			    </com:TTableCell>
+			  </com:TTableRow>		
+			  
+      </com:TTable>
+      </com:TPanel>
+      <br />
+	
+	</div>
+	
+	<!-- <com:TJavascriptLogger />  -->
+    </com:TActivePanel>		 
+  
+</com:TContent>
+
+

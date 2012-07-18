@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+
+
+<authorization>
+
+	
+	<!-- Del paquete instructor: -->
+	<!-- Anular los usuarios no logueados y los demas diferentes al Instructor -->
+	
+	<allow pages="instructor.Consultar_casos_informes" 	users="Instructor,Secretario" />
+	<deny  pages="instructor.Consultar_casos_informes" 	users="?" />
+	
+	<allow pages="instructor.Consultar_grupo"		 	users="Instructor,Secretario" />
+	<deny  pages="instructor.Consultar_grupo"		 	users="?" />
+	
+	<allow pages="instructor.Consultar_programacion" 	users="Instructor,Secretario" />
+	<deny  pages="instructor.Consultar_programacion" 	users="?" />	
+	
+	<allow pages="instructor.Enviar_caso" 				users="Instructor,Secretario" />
+	<deny  pages="instructor.Enviar_caso" 				users="?" />	
+	
+	<allow pages="instructor.Enviar_informe" 			users="Instructor,Secretario" />
+	<deny  pages="instructor.Enviar_informe" 			users="?" />
+			
+	
+
+	<!-- De paquete secretario: -->
+	<!-- Anular los usuarios no logueados y los demas diferentes al Secretario -->
+	
+	
+	<allow pages="secretario.Add_asistente_acta"   	users="Secretario" />
+    <deny  pages="secretario.Add_asistente_acta"   	users="?,Instructor" />
+	
+	<allow pages="secretario.Add_compromiso_acta"  	users="Secretario" />
+    <deny  pages="secretario.Add_compromiso_acta"  	users="?,Instructor"/>
+	
+	<allow pages="secretario.Add_grupo" 		  	users="Secretario" />	
+    <deny  pages="secretario.Add_grupo" 		  	users="?,Instructor"/>
+
+	<allow pages="secretario.Add_integrante"   	  	users="Secretario" />	
+    <deny  pages="secretario.Add_integrante"   	  	users="?,Instructor" />
+
+	<allow pages="secretario.Add_sesion" 	  	  	users="Secretario" />	
+    <deny  pages="secretario.Add_sesion" 	  	  	users="?,Instructor" />	
+	
+	<allow pages="secretario.Add_tipificacion" 	  users="Secretario" />
+	<deny  pages="secretario.Add_tipificacion" 	  users="?,Instructor" />
+	
+	<allow pages="secretario.Add_titulacion"       users="Secretario" />
+	<deny  pages="secretario.Add_titulacion"       uusers="?,Instructor" />
+	
+	<allow pages="secretario.Add_trimestre" 		  users="Secretario" />
+	<deny  pages="secretario.Add_trimestre" 		  users="?,Instructor" />
+		
+	<allow pages="secretario.Casos_pendientes" 		users="Secretario" />
+	<deny  pages="secretario.Casos_pendientes" 		users="?,Instructor" />
+	
+	<allow pages="secretario.Compartir_info" 		users="Secretario" />
+	<deny  pages="secretario.Compartir_info" 		users="?,Instructor" />	
+		
+	<allow pages="secretario.Crud_caso" 		    users="Secretario" />	
+	<deny  pages="secretario.Crud_caso" 		    users="?,Instructor" />
+
+	<allow pages="secretario.Crud_grupo" 	      	users="Secretario" />	
+    <deny  pages="secretario.Crud_grupo" 	      	users="?,Instructor" />
+
+	<allow pages="secretario.Crud_informe" 	  	  	users="Secretario" />
+    <deny  pages="secretario.Crud_informe" 	  	  	users="?,Instructor" />
+
+	<allow pages="secretario.Crud_integrante"  	  	users="Secretario" />
+	<deny  pages="secretario.Crud_integrante"  	  	users="?,Instructor" />
+
+	<allow pages="secretario.Crud_sesion" 	  	  	users="Secretario" />
+	<deny  pages="secretario.Crud_sesion" 	  	  	users="?,Instructor" />
+
+	<allow pages="secretario.Crud_tipificaciones"  users="Secretario" />
+    <deny  pages="secretario.Crud_tipificaciones"  users="?,Instructor" />
+	
+	<allow pages="secretario.Crud_titulaciones" 	  users="Secretario" />
+	<deny  pages="secretario.Crud_titulaciones" 	  users="?,Instructor" />
+	
+	<allow pages="secretario.Crud_trimestres" 		users="Secretario" />
+	<deny  pages="secretario.Crud_trimestres" 		users="?,Instructor" />
+	
+	<allow pages="secretario.Datos_administracion" users="Secretario" />
+	<deny  pages="secretario.Datos_administracion" users="?,Instructor"/>
+	
+	<allow pages="secretario.Datos_centro" 	  	  	users="Secretario" />
+    <deny  pages="secretario.Datos_centro" 	  	  	users="?,Instructor" />
+
+	<allow pages="secretario.Datos_coordinacion" 	users="Secretario" />
+    <deny  pages="secretario.Datos_coordinacion" 	users="?,Instructor" />
+	
+	<allow pages="secretario.Editar_asistente_acta" users="Secretario" />
+	<deny  pages="secretario.Editar_asistente_acta" users="?,Instructor" />
+
+	<allow pages="secretario.Editar_caso_acta"   	users="Secretario" />
+	<deny  pages="secretario.Editar_caso_acta"   	users="?,Instructor" />
+
+	<allow pages="secretario.Editar_compromiso_acta" users="Secretario" />
+	<deny  pages="secretario.Editar_compromiso_acta" users="?,Instructor"/>
+
+	<allow pages="secretario.Editar_informe_acta"   users="Secretario" />
+	<deny  pages="secretario.Editar_informe_acta"   users="?,Instructor" />
+
+	<allow pages="secretario.Ejecutar_sesion"  		users="Secretario" />
+	<deny  pages="secretario.Ejecutar_sesion"  		users="?,Instructor" />
+
+	<allow pages="secretario.Generar_acta"   		users="Secretario" />
+	<deny  pages="secretario.Generar_acta"   		users="?,Instructor" />
+
+	<allow pages="secretario.Modificar_usuario"   	users="Secretario" />
+	<deny  pages="secretario.Modificar_usuario"   	users="?,Instructor" />
+
+	<allow pages="secretario.Procesar_caso_acta"	users="Secretario" />
+    <deny  pages="secretario.Procesar_caso_acta"	users="?,Instructor" />
+
+	<allow pages="secretario.Programar_sesion" 		users="Secretario" />
+	<deny  pages="secretario.Programar_sesion" 		users="?,Instructor" />
+
+
+	<!-- Del paquete usuarios: -->
+	<deny pages="usuarios.Usuario_menu" users="?" />
+
+
+	
+</authorization>
+
+
+
+
+</configuration>

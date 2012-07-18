@@ -1,0 +1,102 @@
+<com:TContent ID="contenido">
+
+    <h1>AGREGAR TRIMESTRE</h1> 
+    
+	<br/><br/>
+    <com:TTable Width="510px">
+
+	<com:TTableRow>
+          <com:TTableCell>
+                    <com:TLabel ID="Label1" Text="Nombre:" ForControl="nombre" />
+		  </com:TTableCell>
+		  <com:TTableCell>          
+				<com:TTextBox  ID="nombre" />  	   
+			    <com:TRequiredFieldValidator ControlToValidate="nombre" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />
+			</com:TTableCell>
+    </com:TTableRow>
+	
+	<com:TTableRow>
+          <com:TTableCell>
+            <com:TLabel ID="Label2" Text="Fecha Inicial:" ForControl="fecha_inicial" />
+		  </com:TTableCell>
+		  <com:TTableCell>          
+		  <com:TDatePicker  
+			Id="fecha_inicial" 
+			DateFormat="yyyy-MM-dd"
+			Culture="es"		 
+			InputMode="DropDownList"
+			Mode="Basic"
+			CssClass="calendarstyle"
+		  />
+		  </com:TTableCell>
+    </com:TTableRow>
+	
+	<com:TTableRow>
+          <com:TTableCell>
+            <com:TLabel ID="Label3" Text="Fecha Final:" ForControl="fecha_final" />
+		  </com:TTableCell>
+		  <com:TTableCell>          
+		  <com:TDatePicker  
+			Id="fecha_final" 
+			DateFormat="yyyy-MM-dd"
+			Culture="es"		 
+			InputMode="DropDownList"
+			Mode="Basic"
+			CssClass="calendarstyle"
+		  />
+		  </com:TTableCell>
+    </com:TTableRow>
+	
+	<com:TTableRow>
+	   <com:TTableCell>
+          <com:TLabel ID="Label4" Text="Disponibilidad:" ForControl="estado" />
+		  </com:TTableCell>
+		  <com:TTableCell>          
+		   <com:TDropDownList ID="estado" Width="200px">
+		   <com:TListItem Value="1" Text="Disponible" />
+		   <com:TListItem Value="0" Text="No Disponible"/>
+		   </com:TDropDownList>
+		</com:TTableCell>
+	 </com:TTableRow>		    
+	
+	<com:TTableRow>
+	<com:TTableCell>
+	</com:TTableCell>
+	
+	<com:TTableCell>
+	<br/>
+	<com:TImage ImageUrl="themes/Basic/punto_azul.png" Style="padding:0px;border-style:none;margin-left:20px;"  ImageAlign="middle" ToolTip="Guardar" /> 
+	<com:TActiveLinkButton
+    Text="Guardar"
+    Font.Size="12pt"
+	ValidationGroup="Group1"
+    OnCallback="prepararDatos"
+    ActiveControl.CallbackParameter="value">
+    <prop:ClientSide 
+	OnLoading="Element.show('callback_image');"  
+	OnComplete="Element.hide('callback_image');
+	$('<%= $this->nombre->ClientID %>').value = '';" 
+	/>	
+    </com:TActiveLinkButton>
+	<span id="callback_image" style="display:none">Enviando...<img src="themes/Basic/loading.gif" alt="Cargando"/></span>
+	</com:TTableCell>
+	
+	</com:TTableRow>	
+    </com:TTable>
+
+	<br /><br />
+   	<com:TActiveLabel ID="mensajes" Text=""></com:TActiveLabel>
+	<com:TActiveLabel ID="alertas" Text=""></com:TActiveLabel>
+	
+	<!--  <com:TJavascriptLogger /> -->  
+	
+</com:TContent>
+
+
+<com:TContent ID="informacion">
+   <com:TLabel ID="usuario"  Text="<b>Usuario:</b> Ninguno." />
+</com:TContent>
+
+
+
+

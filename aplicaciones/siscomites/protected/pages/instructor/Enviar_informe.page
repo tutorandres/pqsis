@@ -1,0 +1,175 @@
+<com:TContent ID="contenido">
+
+
+    <h1>DATOS PARA ENV&Iacute;O DE INFORME GENERAL</h1>
+
+  
+    <com:TPanel GroupingText="Datos del encargado de enviar la informaci&oacute;n" Width="510px">
+    <com:TTable>
+              <com:TTableRow>
+                <com:TTableCell>
+                    <com:TLabel ID="Label1" Text="Identificaci&oacute;n:" ForControl="quejoso_id" />
+                </com:TTableCell>
+                <com:TTableCell>
+                    <com:TTextBox ID="quejoso_id" Width="150px" />
+                    <com:TRequiredFieldValidator ControlToValidate="quejoso_id" Display="Dynamic" ErrorMessage="Falta identificacion." ValidationGroup="Group1" />
+                    <com:TDataTypeValidator ControlToValidate="quejoso_id" DataType="Integer" Display="Dynamic" ErrorMessage="Solo numeros." ValidationGroup="Group1" />
+                </com:TTableCell>
+              </com:TTableRow>
+
+              <com:TTableRow>
+                <com:TTableCell>
+                    <com:TLabel ID="Label2" Text="Tipo Identificaci&oacute;n:" ForControl="quejoso_id_tipo" />
+                </com:TTableCell>
+                <com:TTableCell>
+                     <com:TDropDownList ID="quejoso_id_tipo">
+                      <com:TListItem Value=" " Text="Seleccione" />
+                      <com:TListItem Value="CC" />
+                      <com:TListItem Value="TI" />
+                      <com:TListItem Value="NIT" />
+                     </com:TDropDownList>
+                     <com:TRequiredFieldValidator ControlToValidate="quejoso_id_tipo" Display="Dynamic" ErrorMessage="Falta tipo de identificacion." ValidationGroup="Group1" />
+                </com:TTableCell>
+              </com:TTableRow>
+
+
+              <com:TTableRow>
+                <com:TTableCell>
+                    <com:TLabel ID="Label3" Text="Nombre completo:" ForControl="quejoso_nombre" />
+                </com:TTableCell>
+                <com:TTableCell>
+                    <com:TTextBox ID="quejoso_nombre" Width="150px"/>
+                    <com:TRequiredFieldValidator ControlToValidate="quejoso_nombre" Display="Dynamic" ErrorMessage="Falta nombre quejoso." ValidationGroup="Group1" />
+                    <com:TRegularExpressionValidator  ID="validador_quejoso" ControlToValidate="quejoso_nombre" RegularExpression="^[A-Za-záéíóúñÁÉÍÓÚÑ ]*$" Display="Dynamic" ErrorMessage="Solo letras." ValidationGroup="Group1" />
+               
+               </com:TTableCell>
+              </com:TTableRow>
+
+        
+
+
+              <com:TTableRow>
+                <com:TTableCell>
+                    <com:TLabel ID="Label4" Text="Correo:" ForControl="quejoso_correo" />
+                </com:TTableCell>
+                <com:TTableCell>
+                    <com:TTextBox ID="quejoso_correo" Width="150px"/><br/>
+					<com:TRequiredFieldValidator ControlToValidate="quejoso_correo" Display="Dynamic" ErrorMessage="Falta correo quejoso." ValidationGroup="Group1" />
+                    <com:TRegularExpressionValidator  RegularExpression="^[\w-\.]+@([\w-]+\.)+[\w-]{2,8}$" ControlToValidate="quejoso_correo" Display="Dynamic" ErrorMessage="Correo invalido." ValidationGroup="Group1" />
+                </com:TTableCell>
+              </com:TTableRow>
+      </com:TTable>
+      </com:TPanel>
+      <br />
+
+
+   <com:TPanel GroupingText="Seleccione Grupo" Width="510px">
+    <com:TTable>	  
+	  
+	          <com:TTableRow>
+                <com:TTableCell>
+                    <com:TLabel ID="Label8" Text="Seleccione un grupo:" ForControl="grupo_id" />
+                </com:TTableCell>
+                <com:TTableCell>
+                      <com:TActiveDropDownList
+                      ID="grupo_id"
+                      Width="350px"
+                      ActiveControl.CallbackParameter="value" >
+                      </com:TActiveDropDownList>
+                      <span id="grupo_estado" style="display:none"><img src="themes/Basic/loading.gif" alt="Cargando"/></span>
+                      <com:TRequiredFieldValidator ControlToValidate="grupo_id" Display="Dynamic" ErrorMessage="Falta seleccionar grupo." ValidationGroup="Group1" />
+                </com:TTableCell>
+              </com:TTableRow>
+	  
+	  
+	  
+	  
+	  
+	  </com:TTable>
+      </com:TPanel>
+      <br />
+	  
+	    <com:TPanel GroupingText="Datos del informe general" Width="510px">
+        <com:TTable>
+                <com:TTableRow>
+                <com:TTableCell>
+                    <com:TLabel ID="Label14" Text="Describa la situaci&oacute;n general de grupo:" ForControl="caso_descripcion" />
+					<a target="_blank" href="http://revisor.com.ar">Abrir Corrector Ortogr&aacute;fico Online (Copie y pege su texto)</a>
+				</com:TTableCell>
+                <com:TTableCell>
+                    <com:THtmlArea ID="caso_descripcion" EnableVisualEdit="false" Width="250px" Height="120px" />
+                    <com:TRequiredFieldValidator ControlToValidate="caso_descripcion" Display="Dynamic" ErrorMessage="Falta descripcion del informe." ValidationGroup="Group1" />
+                </com:TTableCell>
+              </com:TTableRow>
+			  
+              <com:TTableRow>
+                <com:TTableCell>
+                    <com:TLabel ID="Label17" Text="Digite las letras y n&uacute;meros de la im&aacute;gen:" ForControl="Captcha" />
+                </com:TTableCell>
+                <com:TTableCell>
+					 <com:TCaptcha ID="Captcha" />
+					 <br/>
+					 <com:TTextBox ID="Input" />
+			         <com:TCaptchaValidator 
+					 CaptchaControl="Captcha"
+					 ControlToValidate="Input"
+					 ValidationGroup="Group1"
+					 ErrorMessage="Los caracteres no coinciden con la imagen." />
+				</com:TTableCell>
+              </com:TTableRow>
+	  
+	  
+	  	    <com:TTableRow>	
+				<com:TTableCell>
+				</com:TTableCell>
+				
+				<com:TTableCell>
+				<br/>
+				<com:TImage ImageUrl="themes/Basic/punto_azul.png" Style="padding:0px;border-style:none;margin-left:1px;"  ImageAlign="middle" ToolTip="Consultar" /> 
+				<com:TActiveLinkButton
+				Text="Enviar"
+				Font.Size="12pt"
+				ValidationGroup="Group1"
+				OnCallback="prepararDatos"
+				ActiveControl.CallbackParameter="value">
+				<prop:ClientSide 
+				OnLoading="Element.show('callback_image');"  
+				OnComplete="Element.hide('callback_image'); 
+				$('<%= $this->caso_descripcion->ClientID %>').value = '';"
+				/>	
+				</com:TActiveLinkButton>
+				<span id="callback_image" style="display:none">Enviando...<img src="themes/Basic/loading.gif" alt="Cargando"/></span>
+				</com:TTableCell>
+				
+			</com:TTableRow>
+	  
+	     </com:TTable>		 
+      </com:TPanel>
+	
+	<br /><br />
+	<com:TActiveLabel ID="mensajes" Text=""></com:TActiveLabel>
+	<com:TActiveLabel ID="alertas" Text=""></com:TActiveLabel>
+	
+	
+	
+		<com:TValidationSummary
+        ValidationGroup="Group1"
+        AutoUpdate="true"
+        Display="None"
+        ShowMessageBox="true"
+        HeaderText="Resumen de errores:" />
+	
+	
+	<!--  <com:TJavascriptLogger />  -->
+
+	
+</com:TContent>
+
+
+<com:TContent ID="informacion">
+   <com:TLabel ID="usuario"  Text="<b>Usuario:</b> Ninguno." />
+</com:TContent>
+
+
+
+

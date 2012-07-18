@@ -1,0 +1,110 @@
+<com:TContent ID="contenido">
+
+    <h1>AGREGAR  TIPIFICACI&Oacute;N</h1> 
+    
+	<br/><br/>
+    <com:TTable Width="510px">
+
+    <com:TTableRow>
+          <com:TTableCell>
+                    <com:TLabel ID="Label1" Text="Nombre:" ForControl="nombre" />
+		  </com:TTableCell>
+		  <com:TTableCell>          
+				<com:TTextBox  ID="nombre" />  	   
+			    <com:TRequiredFieldValidator ControlToValidate="nombre" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />
+				<com:TRegularExpressionValidator ID="validador_nombre" ControlToValidate="nombre" RegularExpression="^[A-Za-záéíóúñÁÉÍÓÚÑ ]*$" Display="Dynamic" ErrorMessage="Solo letras." ValidationGroup="Group1" />
+			</com:TTableCell>
+    </com:TTableRow>
+			  
+			  
+			    
+	<com:TTableRow>
+          <com:TTableCell>
+                    <com:TLabel ID="Label2" Text="Tipo Falta:" ForControl="tipo_falta" />
+		  </com:TTableCell>
+		  <com:TTableCell>          
+	      
+		  <com:TDropDownList ID="tipo_falta"
+			Width="200px"
+			SelectedValue=<%#$this->DataItem['tipo_falta'] %> >
+			<com:TListItem  Text="Académica" />
+			<com:TListItem  Text="Disciplinaria"/>
+			</com:TDropDownList>
+		  
+		  </com:TTableCell>
+    </com:TTableRow>		  
+			  
+			  
+	
+    <com:TTableRow>
+          <com:TTableCell>
+                    <com:TLabel ID="Label3" Text="Nivel:" ForControl="nivel" />
+		  </com:TTableCell>
+		  <com:TTableCell>          
+	      
+		   <com:TDropDownList ID="nivel"
+			Width="200px"
+			SelectedValue=<%#$this->DataItem['nivel'] %> >
+			<com:TListItem  Value="Leve" Text="Leve" />
+			<com:TListItem  Value="Grave" Text="Grave"/>
+			<com:TListItem  Value="Gravísima" Text="Gravísima" />
+			</com:TDropDownList> 
+		  
+		  </com:TTableCell>
+    </com:TTableRow>	
+
+	
+
+	<com:TTableRow>
+          <com:TTableCell>
+                    <com:TLabel ID="Label4" Text="Reglamento aplicado:" ForControl="reglamento_aplicado" />
+		  <a target="_blank" href="http://revisor.com.ar">Abrir Corrector Ortogr&aacute;fico Online (Copie y pege su texto)</a>
+		  </com:TTableCell>
+		  <com:TTableCell>          
+					<com:THtmlArea ID="reglamento_aplicado"  Text=<%#$this->DataItem['reglamento_aplicado'] %>  EnableVisualEdit="false" Width="250px" Height="120px" />
+					<com:TRequiredFieldValidator ControlToValidate="reglamento_aplicado" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />
+		  </com:TTableCell>
+    </com:TTableRow>	 
+	
+	
+	<com:TTableRow>
+	<com:TTableCell>
+	</com:TTableCell>
+	
+	<com:TTableCell>
+	<br/>
+	<com:TImage ImageUrl="themes/Basic/punto_azul.png" Style="padding:0px;border-style:none;margin-left:20px;"  ImageAlign="middle" ToolTip="Guardar" /> 
+	<com:TActiveLinkButton
+    Text="Guardar"
+    Font.Size="12pt"
+	ValidationGroup="Group1"
+    OnCallback="prepararDatos"
+    ActiveControl.CallbackParameter="value">
+    <prop:ClientSide 
+	OnLoading="Element.show('callback_image');"  
+	OnComplete="Element.hide('callback_image');
+	$('<%= $this->nombre->ClientID %>').value = '';" 
+	/>	
+    </com:TActiveLinkButton>
+	<span id="callback_image" style="display:none">Enviando...<img src="themes/Basic/loading.gif" alt="Cargando"/></span>
+	</com:TTableCell>
+	
+	</com:TTableRow>	
+    </com:TTable>
+
+	<br /><br />
+   	<com:TActiveLabel ID="mensajes" Text=""></com:TActiveLabel>
+	<com:TActiveLabel ID="alertas" Text=""></com:TActiveLabel>
+	
+	<!-- <com:TJavascriptLogger /> -->  
+	
+</com:TContent>
+
+
+<com:TContent ID="informacion">
+   <com:TLabel ID="usuario"  Text="<b>Usuario:</b> Ninguno." />
+</com:TContent>
+
+
+
+

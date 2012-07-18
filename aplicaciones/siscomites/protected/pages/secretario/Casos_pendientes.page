@@ -1,0 +1,95 @@
+
+
+<com:TContent ID="contenido">
+
+ <h1>CASOS PENDIENTES (VERIFICACI&Oacute;N DE PLANES DE MEJORAMIENTO)</h1>
+ <br />
+ <h4>* Si aparecen valores negativos representan los d&iacute;as despu&eacute;s de la fecha l&iacute;mite.</h4>
+ <br />
+ 
+<com:TDataList
+     ID="DataList"
+     DataKeyField="id"
+     OnUpdateCommand="updateItem"
+     OnDeleteCommand="deleteItem"
+     HeaderStyle.BackColor="#74A846"
+     ItemStyle.BackColor="#E6ECFF"
+     AlternatingItemStyle.BackColor="#FFFFFF"
+     EditItemStyle.BackColor="#E4E4E4"
+     SelectedItemStyle.BackColor="lightyellow">
+ 
+ 
+ <!--
+    
+	ItemStyle.width="470px"
+	AlternatingItemStyle.width="470px" 
+	HeaderStyle.ForeColor="white" 
+ 
+ -->
+ 
+<prop:HeaderTemplate>
+<table style="width=520px;padding:0px;margin:0px;">
+<tr align="left"> 
+   <th width="100px">Grupo</th> 
+   <th width="100px">Aprendiz</th> 
+   <th width="100px">Responsable</th> 
+   <th width="80px">Fechas</th> 
+   <th width="30px">* Vence en</th> 
+   <th width="110px">Opciones</th> 
+</tr>
+</table> 
+</prop:HeaderTemplate>
+<prop:ItemTemplate>
+<table style="width=520px;padding:0px;margin:0px;">
+<tr>
+  <td width="100px"><%#$this->DataItem['grupo']%></td>	 
+  <td width="100px"><%#$this->DataItem['aprendiz']%></td>
+  <td width="100px"><%#$this->DataItem['responsable']%></td>
+  <td width="80px"><%#$this->DataItem['fecha']%></td>
+  <td width="30px"><%#$this->DataItem['dias']%></td>
+  <td width="110px">
+  <com:TImage ImageUrl="themes/Basic/punto_verde.png" Style="padding:0px;border-style:none;margin-left:10px;"  ImageAlign="middle" ToolTip="Recordar" />
+  <com:TLinkButton Text="Recordar" CommandName="update"  Attributes.onclick="if(!confirm('Esta seguro?')) return false;"/>
+  <com:TImage ImageUrl="themes/Basic/punto_rojo.png" Style="padding:0px;border-style:none;margin-left:10px;"  ImageAlign="middle" ToolTip="Eliminar" />
+  <com:TLinkButton Text="Procesado" CommandName="delete" Attributes.onclick="if(!confirm('Esta seguro?')) return false;"/>
+  </td>
+</tr>
+</table>
+</prop:ItemTemplate>
+ 
+</com:TDataList>
+
+<br /><br />
+	
+<table style="width=520px;padding:0px;margin:0px;">
+<tr>
+  <td>
+  
+  <com:TImage ImageUrl="themes/Basic/punto_azul.png" Style="padding:0px;border-style:none;margin-left:10px;"  ImageAlign="middle" ToolTip="Recordar" />
+  
+  <com:TLinkButton
+		ID="brecordar"
+		Text="Generar Recordatorio Global"
+		OnCommand="recordar"	
+		Attributes.onclick="if(!confirm('Esta seguro?')) return false;"		
+   />
+  
+  </td>
+</tr>
+</table>
+
+<br />
+<com:TActiveLabel ID="mensajes" Text=""></com:TActiveLabel>
+<com:TActiveLabel ID="alertas" Text=""></com:TActiveLabel>
+<br /><br />
+  
+<!-- <com:TJavascriptLogger /> -->
+  
+</com:TContent>
+
+
+<com:TContent ID="informacion">
+   <com:TLabel ID="usuario"  Text="<b>Usuario:</b> Ninguno." />
+</com:TContent>
+
+

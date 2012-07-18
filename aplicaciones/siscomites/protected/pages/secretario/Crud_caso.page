@@ -1,0 +1,296 @@
+
+
+<com:TContent ID="contenido">
+
+ <h1>LISTADO DE CASOS ENVIADOS NO PROGRAMADOS</h1>
+ <br />
+
+
+
+<com:TDataList
+     ID="DataList"
+     DataKeyField="id"
+	 AllowPaging="true"
+	 PageSize="5"
+     OnEditCommand="editItem"
+     OnCancelCommand="cancelItem"
+     OnUpdateCommand="updateItem"
+     OnDeleteCommand="deleteItem"
+     OnSelectedIndexChanged="selectItem"
+     HeaderStyle.BackColor="#74A846"
+     ItemStyle.BackColor="#E6ECFF"
+     AlternatingItemStyle.BackColor="#FFFFFF"
+     EditItemStyle.BackColor="#E4E4E4"
+     SelectedItemStyle.BackColor="lightyellow">
+ 
+ 
+ <!--
+    
+	ItemStyle.width="470px"
+	AlternatingItemStyle.width="470px" 
+	HeaderStyle.ForeColor="white" 
+ 
+ -->
+ 
+<prop:HeaderTemplate>
+<table style="width=520px;padding:0px;margin:0px;">
+<tr align="left"> 
+   <th width="70px">Grupo</th>  
+   <th width="350px">Datos</th> 
+   <th width="100px">Opciones</th> 
+</tr>
+</table> 
+</prop:HeaderTemplate>
+<prop:ItemTemplate>
+<table style="width=520px;padding:0px;margin:0px;">
+<tr>
+  <td width="70px"><%#$this->DataItem['grupo_codigo']%></td>
+  <td width="350px">
+      <%#$this->DataItem['grupo_nombre']%> - 
+	  <%#$this->DataItem['quejoso_nombre']%> - 
+	  <%#$this->DataItem['aprendiz_nombre']%> -
+	  <%#$this->DataItem['fecha']%>
+  </td>	  
+  <td width="100px">
+  <com:TImage ImageUrl="themes/Basic/punto_verde.png" Style="padding:0px;border-style:none;margin-left:10px;"  ImageAlign="middle" ToolTip="Editar" />
+  <com:TLinkButton Text="Editar" CommandName="edit" />
+  <com:TImage ImageUrl="themes/Basic/punto_rojo.png" Style="padding:0px;border-style:none;margin-left:10px;"  ImageAlign="middle" ToolTip="Eliminar" />
+  <com:TLinkButton Text="Eliminar" CommandName="delete" Attributes.onclick="if(!confirm('Esta seguro?')) return false;"/>
+  </td>
+</tr>
+</table>
+</prop:ItemTemplate>
+ 
+ 
+ 
+<prop:EditItemTemplate>
+<table>
+
+
+<tr>
+  <td>Descripci&oacute;n:</td>
+  <td><com:THtmlArea 
+	  ID="descripcion"
+	  Text="<%#$this->DataItem['descripcion'] %>"
+	  Width="250px" 
+	  Height="120px"
+      EnableVisualEdit="false"	  
+   />  
+  <com:TRequiredFieldValidator ControlToValidate="descripcion" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />	  
+  </td>
+</tr>
+
+
+<tr>
+  <td>Pruebas:</td>
+  <td><com:THtmlArea 
+	  ID="pruebas" 
+	  Width="250px" 
+	  Height="120px" 
+	  EnableVisualEdit="false" 
+	  Text=<%#$this->DataItem['pruebas'] %>
+   />  
+  <com:TRequiredFieldValidator ControlToValidate="pruebas" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />	  
+  </td>
+</tr>
+
+<tr>
+  <td>Fecha:</td>
+  <td>	
+	<com:TDatePicker 
+		ID="fecha" 
+		DateFormat="yyyy-MM-dd"
+		Culture="es"		
+		Date=<%#$this->DataItem['fecha'] %> 
+		InputMode="DropDownList"
+		Mode="Basic"
+		CssClass="calendarstyle"
+	/>   	   
+  </td>
+</tr>
+
+<tr>
+  <td>Tipificaciones:</td>
+  <td>	
+	
+   		<com:TCheckBoxList 
+		ID="tipificaciones" 
+		DataValueField="id" 
+		DataTextField="nombre" 
+		RepeatLayout="Raw" 
+		RepeatDirection="Vertical"
+		DataSource=<%# $this->DataItem['tipificaciones'] %>
+		SelectedValues=<%# $this->DataItem['tipificacion_select'] %>
+		TextAlign="Left" 
+		/>
+		<br/>
+		<com:TListControlValidator
+		ControlToValidate="tipificaciones"
+		MinSelection="1"
+		ValidationGroup="Group1"
+		ErrorMessage="Debe seleccionar al menos uno." /> 
+  </td>
+</tr>
+
+
+<tr>
+  <td>Grupo:</td>
+  <td>
+  <com:TDropDownList ID="grupo"
+    DataTextField="nombre"
+    DataValueField="id"
+	Width="200px"
+	DataSource=<%#$this->DataItem['grupos'] %>
+    SelectedValue=<%#$this->DataItem['grupo_id'] %> />
+  </td>
+</tr>
+
+
+
+<tr>
+  <td>Quejoso Identificaci&oacute;n:</td>
+  <td><com:TTextBox
+           ID="quejoso_identificacion"
+           Text=<%#$this->DataItem['quejoso_identificacion'] %>
+      />
+  <com:TRequiredFieldValidator ControlToValidate="quejoso_identificacion" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />	  
+    <com:TDataTypeValidator ControlToValidate="quejoso_identificacion" DataType="Integer" Display="Dynamic" ErrorMessage="Solo numeros." ValidationGroup="Group1" />
+  </td>
+</tr>
+
+
+<tr>
+  <td>Identificaci&oacute;n tipo:</td>
+  <td>
+   <com:TDropDownList ID="quejoso_id_tipo"
+	Width="200px"
+    SelectedValue=<%#$this->DataItem['quejoso_id_tipo'] %> >
+    <com:TListItem Value="CC" />
+    <com:TListItem Value="TI" />
+    <com:TListItem Value="NIT" />
+    </com:TDropDownList>
+   </td>
+</tr>
+
+
+<tr>
+  <td>Quejoso Nombre:</td>
+  <td><com:TTextBox
+           ID="quejoso_nombre"
+           Text=<%#$this->DataItem['quejoso_nombre'] %>
+           />
+  <com:TRequiredFieldValidator ControlToValidate="quejoso_nombre" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />
+  <com:TRegularExpressionValidator ControlToValidate="quejoso_nombre" RegularExpression="^[A-Za-záéíóúñÁÉÍÓÚÑ ]*$" Display="Dynamic" ErrorMessage="Solo letras." ValidationGroup="Group1" />
+  </td>
+</tr>
+
+<tr>
+  <td>Quejoso Correo:</td>
+  <td><com:TTextBox
+           ID="quejoso_correo"
+           Text=<%#$this->DataItem['quejoso_correo'] %>
+           />
+  <com:TRequiredFieldValidator ControlToValidate="quejoso_correo" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />
+  <com:TRegularExpressionValidator  RegularExpression="^[\w-\.]+@([\w-]+\.)+[\w-]{2,8}$" ControlToValidate="quejoso_correo" Display="Dynamic" ErrorMessage="Correo invalido." ValidationGroup="Group1" />   
+  </td>
+</tr>
+
+
+
+
+
+
+
+<tr>
+  <td>Aprendiz Identificaci&oacute;n:</td>
+  <td><com:TTextBox
+           ID="aprendiz_identificacion"
+           Text=<%#$this->DataItem['aprendiz_identificacion'] %>
+      />
+  <com:TRequiredFieldValidator ControlToValidate="aprendiz_identificacion" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />	  
+    <com:TDataTypeValidator ControlToValidate="aprendiz_identificacion" DataType="Integer" Display="Dynamic" ErrorMessage="Solo numeros." ValidationGroup="Group1" />
+  </td>
+</tr>
+
+
+<tr>
+  <td>Identificaci&oacute;n tipo:</td>
+  <td>
+   <com:TDropDownList ID="aprendiz_id_tipo"
+	Width="200px"
+    SelectedValue=<%#$this->DataItem['aprendiz_id_tipo'] %> >
+    <com:TListItem Value="CC" />
+    <com:TListItem Value="TI" />
+    <com:TListItem Value="NIT" />
+    </com:TDropDownList>
+   </td>
+</tr>
+
+
+<tr>
+  <td>Aprendiz Nombre:</td>
+  <td><com:TTextBox
+           ID="aprendiz_nombre"
+           Text=<%#$this->DataItem['aprendiz_nombre'] %>
+           />
+  <com:TRequiredFieldValidator ControlToValidate="aprendiz_nombre" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />
+  <com:TRegularExpressionValidator ControlToValidate="aprendiz_nombre" RegularExpression="^[A-Za-záéíóúñÁÉÍÓÚÑ ]*$" Display="Dynamic" ErrorMessage="Solo letras." ValidationGroup="Group1" />
+  </td>
+</tr>
+
+<tr>
+  <td>Aprendiz Correo:</td>
+  <td><com:TTextBox
+           ID="aprendiz_correo"
+           Text=<%#$this->DataItem['aprendiz_correo'] %>
+           />
+  <com:TRequiredFieldValidator ControlToValidate="aprendiz_correo" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />
+  <com:TRegularExpressionValidator  RegularExpression="^[\w-\.]+@([\w-]+\.)+[\w-]{2,8}$" ControlToValidate="aprendiz_correo" Display="Dynamic" ErrorMessage="Correo invalido." ValidationGroup="Group1" />    
+  </td>
+</tr>
+
+
+<tr>
+  <td colspan="2" align="center">
+    <br/>
+	<com:TImage ImageUrl="themes/Basic/punto_azul.png" Style="padding:0px;border-style:none;margin-left:10px;"  ImageAlign="middle" ToolTip="Guardar" />
+	<com:TLinkButton Text="Guardar" CommandName="update" ValidationGroup="Group1" />
+    <com:TImage ImageUrl="themes/Basic/punto_rojo.png" Style="padding:0px;border-style:none;margin-left:10px;"  ImageAlign="middle" ToolTip="Cancelar" />
+	<com:TLinkButton Text="Cancelar" CommandName="cancel" />
+  </td>
+</tr>
+</table>
+</prop:EditItemTemplate>
+
+ 
+</com:TDataList>
+
+<br />
+
+<div  class="info_paginacion" align="left">
+<com:TLabel ID="paginacion" Text=""></com:TLabel>
+<com:TPager ID="Pager"
+    ControlToPaginate="DataList"
+    Mode="Numeric"
+	ButtonType="PushButton"
+	PageButtonCount="3"
+    OnPageIndexChanged="pageChanged"
+/>
+</div>
+
+
+	<br />
+   	<com:TActiveLabel ID="mensajes" Text=""></com:TActiveLabel>
+	<com:TActiveLabel ID="alertas" Text=""></com:TActiveLabel>
+    <br /><br />
+  
+<!-- <com:TJavascriptLogger /> -->
+  
+</com:TContent>
+
+
+<com:TContent ID="informacion">
+   <com:TLabel ID="usuario"  Text="<b>Usuario:</b> Ninguno." />
+</com:TContent>
+
+

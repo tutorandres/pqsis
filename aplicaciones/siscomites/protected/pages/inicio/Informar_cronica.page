@@ -1,0 +1,82 @@
+
+<com:TContent ID="contenido">
+<h1>ACERCA DE, HISTORIA Y EVOLUCI&Oacute;N</h1>
+<p>
+SOFTWARE SIScomites
+(Sistema Integrado de Seguimiento M&oacute;dulo Comit&eacute;s)
+</p>
+
+<p>
+Todo inicia con el an&aacute;lisis al proceso de comit&eacute;s de evaluaci&oacute;n y seguimiento para 
+encontrar falencias y optimizarlo. Las fallas m&aacute;s significativas  que se encontraron fueron: 
+</p>
+<ol>
+<li>Incumplimiento de plazos en la documentaci&oacute;n de acuerdo al debido 
+proceso dispuesto en el reglamento del aprendiz Sena.
+</li>
+<li>Inconsistencias en la trazabilidad del proceso debido al gran 
+vol&uacute;men de informaci&oacute;n que maneja el proceso. 
+</li>
+</ol>
+<p>
+De acuerdo al an&aacute;lisis y a  mi perfil de ingeniero de 
+sistemas le plantee, al coordinador Dr. Jos&eacute; Samuel Arbel&aacute;ez 
+Zuleta la implementaci&oacute;n de un software que  mitigara las 
+fallas encontradas y optimizara el proceso agreg&aacute;ndole 
+las siguientes caracter&iacute;sticas:
+</p>
+<ol>
+<li>Generaci&oacute;n de la documentaci&oacute;n en tiempo real.</li>
+<li>Seguimiento de todo el proceso de principio a fin e historial de f&aacute;cil consulta.</li>
+<li>Generaci&oacute;n de indicadores y estad&iacute;sticas para la toma de decisiones y ajustes administrativos.
+</li>
+</ol>
+<p>
+As&iacute;, despu&eacute;s de un a&ntilde;o de codificaci&oacute;n durante el 2009 y un a&ntilde;o 
+de implantaci&oacute;n durante el 2010 donde se realizaron  m&aacute;s de 150 
+comit&eacute;s de evaluaci&oacute;n y seguimiento, se evidenci&oacute; la optimizaci&oacute;n 
+del proceso. En el a&ntilde;o actual, se tiene proyectada la implantaci&oacute;n 
+total y su desarrollo final. 
+</p>
+<p>
+El software para legalidad y confianza del Sena tiene 
+derechos de autor s&oacute;lo de reconocimiento m&aacute;s n&oacute; de 
+propiedad bajo la licencia de software libre creativecommons 
+avalada para Colombia, la cual permite: Compartir - copiar, 
+distribuir, ejecutar y comunicar p&uacute;blicamente, hacer obras 
+derivadas bajo la condici&oacute;n de reconocer los cr&eacute;ditos y si se 
+altera, transforma o genera una obra derivada, s&oacute;lo puede 
+distribuir bajo una licencia id&eacute;ntica a &eacute;sta. El texto 
+completo lo puede consultar en 
+<a href="http://creativecommons.org/licenses/by-sa/2.5/co/">-Texto Completo-</a>
+
+<p><br />
+Muchas personas han aportado al proyecto, entre las m&aacute;s involucradas est&aacute;n: 
+<br /><br /><b>
+<ul>
+<li>Coordinador Grupo &Eacute;tica y Bienestar al aprendiz Direcci&oacute;n General Padre Oscar Londo&ntilde;o P.</li>
+<li>Subdirector Carlos Alberto Aguirre P&eacute;rez</li>
+<li>Coordinador Acad&eacute;mico Jos&eacute; Samuel Arbel&aacute;ez Zuleta</li>
+<li>Coordinadora Bienestar Aprendices Alba Luc&iacute;a Jim&eacute;nez Garc&iacute;a</li>
+<li>Secretaria de Comit&eacute;s A&ntilde;o 2009 Claudia Mar&iacute;n Casta&ntilde;o</li>
+<li>Secretaria de Comit&eacute;s A&ntilde;o 2010 Edna Yuvery Pati&ntilde;o G&oacute;mez</li>
+<li>Secretaria de Comit&eacute;s A&ntilde;o 2011 Liliana Andrea Orrego Garc&iacute;a</li>
+</ul>
+<br /></p>
+<p>Y en general a todo el programa de comercio y servicios de la regional Quind&iacute;o.
+<br /><br /></b>
+Muchas gracias por su valioso apoyo.
+</p>
+
+
+</p><br /><h4>&nbsp;&nbsp;&nbsp;&nbsp;Muchos &Eacute;xitos y recuerde, "Para eso estamos..."</h4>
+
+<br /><br /><br /><br /><br /><br /><br />
+
+</com:TContent>
+
+
+
+<com:TContent ID="informacion">
+   <com:TLabel ID="usuario"  Text="<b>Usuario:</b> Ninguno." />
+</com:TContent>

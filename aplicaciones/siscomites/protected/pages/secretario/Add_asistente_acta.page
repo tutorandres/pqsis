@@ -1,0 +1,112 @@
+<com:TContent ID="Main">
+
+	 <h1>SISCOMITES</h1>
+	 <h1>AGREGAR ASISTENTE</h1>
+   
+	
+	<com:TActivePanel id="DataPanel">
+	
+	<div style="padding:10px;margin:20px;">
+
+	<br />
+	<com:TActiveLabel ID="mensajes" Text=""></com:TActiveLabel>
+	<com:TActiveLabel ID="alertas" Text="" BackColor="#FFFFFF" ></com:TActiveLabel>
+	
+
+	<com:TPanel GroupingText="Agregar Asistente" Width="700px">
+    <com:TTable CellSpacing="5" Width="650px" CellPadding="5" HorizontalAlign="Left">	
+
+              <com:TTableRow>
+                <com:TTableCell>
+                    <com:TLabel ID="Label1" Text="Nombre:" ForControl="nombre" />
+                </com:TTableCell>
+                <com:TTableCell>
+                    <com:TTextBox ID="nombre" Width="200px"/>
+                    <com:TRequiredFieldValidator ControlToValidate="nombre" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />
+					<com:TRegularExpressionValidator ID="validador_nombre" ControlToValidate="nombre" RegularExpression="^[A-Za-záéíóúñÁÉÍÓÚÑ ]*$" Display="Dynamic" ErrorMessage="Solo letras." ValidationGroup="Group1" />
+               </com:TTableCell>
+              </com:TTableRow>
+			  
+			  <com:TTableRow>
+                <com:TTableCell>
+                    <com:TLabel ID="Label2" Text="Rol:" ForControl="rol" />
+                </com:TTableCell>
+                <com:TTableCell>
+                    <com:TTextBox ID="rol" Width="200px"/>
+                    <com:TRequiredFieldValidator ControlToValidate="rol" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />
+					<com:TRegularExpressionValidator ID="validador_rol" ControlToValidate="rol" Display="Dynamic" RegularExpression="^[A-Za-záéíóúñÁÉÍÓÚÑ ]*$" ErrorMessage="Solo letras." ValidationGroup="Group1" />
+               </com:TTableCell>
+              </com:TTableRow>
+			  
+			  
+			  <com:TTableRow>
+                <com:TTableCell>
+                    <com:TLabel ID="Label4" Text="Entidad:" ForControl="entidad" />
+                </com:TTableCell>
+                <com:TTableCell>
+                    <com:TTextBox ID="entidad" Text="Sena" Width="150px"/>
+               </com:TTableCell>
+              </com:TTableRow>
+			  
+			  
+			  <com:TTableRow>
+                <com:TTableCell>
+                    <com:TLabel ID="Label9" Text="Correo:" ForControl="correo" />
+                </com:TTableCell>
+                <com:TTableCell>
+                    <com:TTextBox ID="correo" Text="" Width="150px"/>
+					<com:TRegularExpressionValidator  RegularExpression="^[\w-\.]+@([\w-]+\.)+[\w-]{2,8}$" ControlToValidate="correo" Display="Dynamic" ErrorMessage="Correo invalido." ValidationGroup="Group1" />
+               </com:TTableCell>
+              </com:TTableRow>
+			  
+			  
+			  <com:TTableRow>
+                <com:TTableCell>
+                    <com:TLabel ID="Label5" Text="N&uacute;mero de contacto:" ForControl="numero" />
+                </com:TTableCell>
+                <com:TTableCell>
+                    <com:TTextBox ID="numero" Width="150px"/>  
+               </com:TTableCell>
+              </com:TTableRow>
+			    
+			  <com:TTableRow>
+			    <com:TTableCell Width="200px">
+                    <com:TLabel ID="Label7" Text="Asistio? :" ForControl="asistio" />
+                </com:TTableCell>
+				<com:TTableCell Width="450px">
+					<com:TDropDownList ID="asistio" Width="200px">
+					<com:TListItem Value="Si" Text="Si"/>
+					<com:TListItem Value="No" Text="No"/>
+					</com:TDropDownList>
+			    </com:TTableCell>
+			  </com:TTableRow>	
+			  
+			  <com:TTableRow> 
+			    <com:TTableCell Width="200px">
+                </com:TTableCell>
+				<com:TTableCell Width="450px">
+	      
+		        <com:TImage ImageUrl="themes/Basic/punto_azul.png" Style="padding:0px;border-style:none;margin-left:10px;"  ImageAlign="middle" ToolTip="Guardar" />
+				<com:TLinkButton Text="Guardar" OnCommand="prepararDatos" ValidationGroup="Group1" />				
+				<com:TImage ImageUrl="themes/Basic/punto_rojo.png" Style="padding:0px;border-style:none;margin-left:10px;"  ImageAlign="middle" ToolTip="Cerrar" />
+				<com:TLinkButton Text="Cerrar" Attributes.onclick="window.close();"/>
+
+			    </com:TTableCell>
+			  </com:TTableRow>	
+			  
+			  
+      </com:TTable>
+      </com:TPanel>
+	
+	</com:TActivePanel>
+	
+	<!-- <com:TJavascriptLogger /> -->
+    <br />
+
+	
+</com:TContent>
+
+
+
+
+

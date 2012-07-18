@@ -1,0 +1,37 @@
+
+<com:TContent ID="Main">
+<br /><br /><br />
+<h1>APLICACI&Oacute;N DEL REGLAMENTO SANCIONES</h1>
+<br /><br />
+
+	<com:TDataList
+			 ID="dl_sancion"
+			 HeaderStyle.BackColor="#74A846"
+			 ItemStyle.BackColor="#E6ECFF"
+			 AlternatingItemStyle.BackColor="#FFFFFF"
+			 EditItemStyle.BackColor="#E4E4E4"
+			 SelectedItemStyle.BackColor="lightyellow">
+
+		
+			<prop:ItemTemplate>
+			<table class="tablaLista">
+			<tr>
+			<col class="columnaTama4"/>
+			<td><%# '<b>' . $this->DataItem['nombre'] . ' - Tipo: ' . $this->DataItem['tipo'] . '</b><br />' .  $this->DataItem['reglamento'] %></td>
+			</tr>
+			</table>
+			</prop:ItemTemplate>  
+	</com:TDataList>
+    
+	<br />
+   	<com:TActiveLabel ID="mensajes" Text=""></com:TActiveLabel>
+	<com:TActiveLabel ID="alertas" Text=""></com:TActiveLabel>
+	<br />
+	
+    <!--  <com:TJavascriptLogger />  --> 
+	
+</com:TContent>
+
+    
+
+

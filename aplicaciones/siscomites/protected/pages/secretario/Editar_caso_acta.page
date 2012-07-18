@@ -1,0 +1,224 @@
+
+
+<com:TContent ID="Main">
+
+	 <h1>SISCOMITES</h1>
+	 <h1>MODIFICAR CASO</h1>
+   
+	
+	<com:TActivePanel id="DataPanel">
+	
+	<div style="padding:10px;margin:20px;">
+
+	<br />
+	<com:TActiveLabel ID="mensajes" Text=""></com:TActiveLabel>
+	<com:TActiveLabel ID="alertas" Text="" BackColor="#FFFFFF" ></com:TActiveLabel>
+	
+
+	<com:TPanel GroupingText="Modificar Caso" Width="600px">
+    <com:TTable CellSpacing="5" Width="550px" CellPadding="5" HorizontalAlign="Left">		
+			  
+			  
+			  <com:TTableRow>
+                <com:TTableCell Width="200px">
+                    <com:TLabel ID="Label1" Text="Codigo:" ForControl="caso_id" />
+                </com:TTableCell>
+                <com:TTableCell Width="450px">
+                    <com:TTextBox ReadOnly="true" BackColor="#E6E6E6" ID="caso_id" Width="200px"/><br/>
+                </com:TTableCell>
+              </com:TTableRow>
+			  
+			  
+			  <com:TTableRow>
+				 <com:TTableCell Width="200px">
+                    <com:TLabel ID="Label2" Text="Pruebas:" ForControl="pruebas" />
+				 </com:TTableCell>
+				 <com:TTableCell Width="500px">
+							<com:THtmlArea ID="pruebas" EnableVisualEdit="false" Width="300px" Height="200px" />
+							<com:TRequiredFieldValidator ControlToValidate="pruebas" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />
+				 </com:TTableCell>
+			  </com:TTableRow>
+			  
+			  
+			  <com:TTableRow>
+				 <com:TTableCell Width="200px">
+                    <com:TLabel ID="Label3" Text="Descipci&oacute;n:" ForControl="descripcion" />
+				 </com:TTableCell>
+				 <com:TTableCell Width="500px">
+							<com:THtmlArea ID="descripcion" EnableVisualEdit="false" Width="300px" Height="200px" />
+							<com:TRequiredFieldValidator ControlToValidate="descripcion" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />
+				 </com:TTableCell>
+			  </com:TTableRow>
+			  
+			  
+			  
+			  <com:TTableRow>
+                <com:TTableCell Width="200px">
+                    <com:TLabel ID="Label4" Text="Fecha:" ForControl="fecha" />
+                </com:TTableCell>
+                <com:TTableCell Width="450px">			   
+					<com:TDatePicker ID="fecha" DateFormat="yyyy-MM-dd" Culture="es" InputMode="DropDownList" Mode="Basic" CssClass="calendarstyle" />		   
+			   </com:TTableCell>
+              </com:TTableRow>
+			  
+			  
+			  
+			  <com:TTableRow>
+                <com:TTableCell Width="200px">
+                    <com:TLabel ID="Label5" Text="Tipificaciones:" ForControl="tipificaciones" />
+                </com:TTableCell>
+                <com:TTableCell Width="450px">			   
+			      		<com:TCheckBoxList 
+						ID="tipificaciones" 
+						DataValueField="id" 
+						DataTextField="nombre" 
+						RepeatLayout="Raw" 
+						RepeatDirection="Vertical"
+						TextAlign="Left" />
+						<br/>
+						<com:TListControlValidator
+						ControlToValidate="tipificaciones"
+						MinSelection="1"
+						ValidationGroup="Group1"
+						ErrorMessage="Debe seleccionar al menos uno." /> 
+			   </com:TTableCell>
+              </com:TTableRow>
+			  
+			  
+			  
+              <com:TTableRow>
+                <com:TTableCell Width="200px">
+                    <com:TLabel ID="Label6" Text="Quejoso Nombre:" ForControl="quejoso_nombre" />
+                </com:TTableCell>
+                <com:TTableCell Width="500px">
+                    <com:TTextBox ID="quejoso_nombre" Width="200px"/>
+					<com:TRegularExpressionValidator ID="validador_quejoso_nombre" ControlToValidate="quejoso_nombre" RegularExpression="^[A-Za-záéíóúñÁÉÍÓÚÑ ]*$" Display="Dynamic" ErrorMessage="Solo letras." ValidationGroup="Group1" />
+					<com:TRequiredFieldValidator ControlToValidate="quejoso_nombre" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />
+			   </com:TTableCell>
+              </com:TTableRow>
+			  
+			  
+			  
+			 
+			  <com:TTableRow>
+				 <com:TTableCell Width="200px">
+                    <com:TLabel ID="Label7" Text="Quejoso identificaci&oacute;n:" ForControl="quejoso_identificacion" />
+				 </com:TTableCell>
+				 <com:TTableCell Width="500px">
+				<com:TTextBox ID="quejoso_identificacion" Width="200px"/>			
+				<com:TRequiredFieldValidator ControlToValidate="quejoso_identificacion" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />	  
+				<com:TDataTypeValidator ControlToValidate="quejoso_identificacion" DataType="Integer" Display="Dynamic" ErrorMessage="Solo numeros." ValidationGroup="Group1" />
+				 </com:TTableCell>
+			  </com:TTableRow>
+			  
+			  
+			  			  
+			  <com:TTableRow>
+                <com:TTableCell Width="200px">
+                    <com:TLabel ID="Label8" Text="Quejoso identificaci&oacute;n tipo:" ForControl="quejoso_id_tipo" />
+                </com:TTableCell>
+                <com:TTableCell Width="450px">			   
+			   <com:TDropDownList ID="quejoso_id_tipo" Width="200px">
+				<com:TListItem Value="CC" />
+				<com:TListItem Value="TI" />
+				<com:TListItem Value="NIT" />
+				</com:TDropDownList>
+			   </com:TTableCell>
+              </com:TTableRow>
+			  
+			  
+			  <com:TTableRow>
+                <com:TTableCell Width="200px">
+                    <com:TLabel ID="Label9" Text="Quejoso Correo:" ForControl="quejoso_correo" />
+                </com:TTableCell>
+                <com:TTableCell Width="450px">			   
+			  <com:TTextBox ID="quejoso_correo" Width="200px"/>
+			  <com:TRequiredFieldValidator ControlToValidate="quejoso_correo" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />
+			  <com:TRegularExpressionValidator ID="validador_quejoso_correo" RegularExpression="^[\w-\.]+@([\w-]+\.)+[\w-]{2,8}$" ControlToValidate="quejoso_correo" Display="Dynamic" ErrorMessage="Correo invalido." ValidationGroup="Group1" />
+			   </com:TTableCell>
+              </com:TTableRow>
+			  
+			  	 
+
+				 
+						  
+              <com:TTableRow>
+                <com:TTableCell Width="200px">
+                    <com:TLabel ID="Label10" Text="Aprendiz Nombre:" ForControl="aprendiz_nombre" />
+                </com:TTableCell>
+                <com:TTableCell Width="500px">
+                    <com:TTextBox ID="aprendiz_nombre" Width="200px"/>
+					<com:TRegularExpressionValidator ID="validador_aprendiz_nombre" ControlToValidate="aprendiz_nombre" RegularExpression="^[A-Za-záéíóúñÁÉÍÓÚÑ ]*$" Display="Dynamic" ErrorMessage="Solo letras." ValidationGroup="Group1" />
+					<com:TRequiredFieldValidator ControlToValidate="aprendiz_nombre" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />
+			   </com:TTableCell>
+              </com:TTableRow>
+			  
+			 
+			  <com:TTableRow>
+				 <com:TTableCell Width="200px">
+                    <com:TLabel ID="Label11" Text="Aprendiz identificaci&oacute;n:" ForControl="aprendiz_identificacion" />
+				 </com:TTableCell>
+				 <com:TTableCell Width="500px">
+				<com:TTextBox ID="aprendiz_identificacion" Width="200px"/>			
+				<com:TRequiredFieldValidator ControlToValidate="aprendiz_identificacion" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />	  
+				<com:TDataTypeValidator ControlToValidate="aprendiz_identificacion" DataType="Integer" Display="Dynamic" ErrorMessage="Solo numeros." ValidationGroup="Group1" />
+				 </com:TTableCell>
+			  </com:TTableRow>
+			  
+			  
+			  			  
+			  <com:TTableRow>
+                <com:TTableCell Width="200px">
+                    <com:TLabel ID="Label12" Text="Aprendiz identificaci&oacute;n tipo:" ForControl="aprendiz_id_tipo" />
+                </com:TTableCell>
+                <com:TTableCell Width="450px">			   
+			   <com:TDropDownList ID="aprendiz_id_tipo" Width="200px">
+				<com:TListItem Value="CC" />
+				<com:TListItem Value="TI" />
+				<com:TListItem Value="NIT" />
+				</com:TDropDownList>
+			   </com:TTableCell>
+              </com:TTableRow>
+			  
+			  
+			  <com:TTableRow>
+                <com:TTableCell Width="200px">
+                    <com:TLabel ID="Label13" Text="Aprendiz Correo:" ForControl="aprendiz_correo" />
+                </com:TTableCell>
+                <com:TTableCell Width="450px">			   
+			  <com:TTextBox ID="aprendiz_correo" Width="200px"/>
+			  <com:TRequiredFieldValidator ControlToValidate="aprendiz_correo" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />
+			  <com:TRegularExpressionValidator ID="validador_aprendiz_correo" RegularExpression="^[\w-\.]+@([\w-]+\.)+[\w-]{2,8}$" ControlToValidate="aprendiz_correo" Display="Dynamic" ErrorMessage="Correo invalido." ValidationGroup="Group1" />
+			   </com:TTableCell>
+              </com:TTableRow>
+			  	  
+				 
+				 
+			  <com:TTableRow> 
+			    <com:TTableCell Width="200px">
+                </com:TTableCell>
+				<com:TTableCell Width="450px">
+	      
+
+				<com:TImage ImageUrl="themes/Basic/punto_azul.png" Style="padding:0px;border-style:none;margin-left:10px;"  ImageAlign="middle" ToolTip="Guardar" />
+				<com:TLinkButton Text="Guardar" OnCommand="guardar" ValidationGroup="Group1" />				
+				<com:TImage ImageUrl="themes/Basic/punto_rojo.png" Style="padding:0px;border-style:none;margin-left:10px;"  ImageAlign="middle" ToolTip="Cerrar" />
+				<com:TLinkButton Text="Cerrar" Attributes.onclick="window.close();"/>
+				
+				
+ 
+			    </com:TTableCell>
+			  </com:TTableRow>		
+			  
+      </com:TTable>
+      </com:TPanel>
+      <br />
+	
+	</div>
+	
+	<!-- <com:TJavascriptLogger />  -->
+    </com:TActivePanel>		 
+  
+</com:TContent>
+
+

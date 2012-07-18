@@ -1,0 +1,136 @@
+
+<com:TContent ID="contenido">
+
+	  <h1>EJECUCI&Oacute;N DE SESI&Oacute;N DE COMIT&Eacute;S</h1>
+	 
+	 
+	 <br />
+	 <br />
+     <table style="width=520px;padding:0px;margin:0px;">
+	 <tr>
+		 <td><b>Seleccione un trimestre:</b></td>
+		 <td>
+			<com:TDropDownList 
+			ID="trimestre_id"
+			AutoPostBack="true"
+			Width="250px"
+			OnSelectedIndexChanged="cargar_sesiones" 
+			/>
+		 </td>		
+	 </tr>
+	 
+	 <tr>
+		 <td><b>Seleccione una sesi&oacute;n:</b></td>
+		 <td>
+			<com:TDropDownList 
+			ID="sesion_id"
+			AutoPostBack="true"
+			Width="250px"
+			Enabled="false"
+			OnSelectedIndexChanged="cargar_programacion" 
+			/>
+		 </td>		
+	 </tr>
+	 
+	 
+	 <tr>
+		 <td></td>
+		 <td>
+			<br/>
+		 	<com:TImage ImageUrl="themes/Basic/punto_morado.png" Style="padding:0px;border-style:none;margin-left:1px;"  ImageAlign="middle" ToolTip="Generar resumen de casos" />
+			<com:TLinkButton
+			ID="bgenerar_resumen"
+			Text="Generar Resumen"
+			OnCommand="generar_resumen"
+			Enabled="false"			
+			Attributes.onclick="if(!confirm('Recuerde que solo se busca en actas ya ejecutadas. Esta seguro?')) return false;"		
+			>	
+			</com:TLinkButton>
+			
+			
+			<com:TImage ImageUrl="themes/Basic/punto_amarillo.png" Style="padding:0px;border-style:none;margin-left:1px;"  ImageAlign="middle" ToolTip="Actualizar" />
+			<com:TLinkButton
+			Text="Actualizar"	
+			Attributes.onclick="location.reload();"		
+			>	
+			</com:TLinkButton>			
+
+		 </td>		
+	 </tr>
+	 
+	 
+	 </table>
+	
+	
+	<com:TActivePanel id="DataPanel">
+	 
+	<br />		
+	<span id="callback_image" style="display:none">Enviando...<img src="themes/Basic/loading.gif" alt="Cargando"/></span>	
+	<br />			
+
+
+			<com:TDataList
+				 ID="DataList"
+				 DataKeyField="grupo_id"
+				 AllowPaging="false"
+				 OnEditCommand="editItem"
+				 OnCancelCommand="cancelItem"
+				 OnUpdateCommand="updateItem"
+				 OnDeleteCommand="deleteItem"
+				 OnSelectedIndexChanged="selectItem"
+				 HeaderStyle.BackColor="#74A846"
+				 ItemStyle.BackColor="#E6ECFF"
+				 AlternatingItemStyle.BackColor="#FFFFFF"
+				 EditItemStyle.BackColor="#E4E4E4"
+				 SelectedItemStyle.BackColor="lightyellow"
+				>	
+				
+				<prop:HeaderTemplate>
+				<table style="width=520px;padding:0px;margin:0px;">
+				<tr> 
+				   <th width="80px">Hora</th>
+				   <th width="110px">Codigo</th> 				   
+				   <th width="210px">Nombre</th>				   
+				   <th width="120px">Opciones</th> 
+				</tr>
+				</table> 
+				</prop:HeaderTemplate>
+				<prop:ItemTemplate>
+				<table style="width=520px;padding:0px;margin:0px;<%#$this->DataItem['estado']%>">
+				<tr>
+				  <td width="80px"><%#$this->DataItem['hora']%></td>	 
+				  <td width="110px"><%#$this->DataItem['grupo_codigo']%></td>
+				  <td width="210px"><%#$this->DataItem['grupo_nombre']%><br/></td>			  
+				  
+				  <td width="120px">
+				  <com:TImage ImageUrl="themes/Basic/punto_azul.png" Style="padding:0px;border-style:none;margin-left:10px;"  ImageAlign="middle" ToolTip="Abrir Acta" />
+				  <com:THyperLink
+				    NavigateUrl="<%=$this->Service->constructUrl('secretario.Generar_acta', array('sesion'=>$this->DataItem['sesion_id'], 'grupo'=>$this->DataItem['grupo_id']))%>"
+					Text="Abrir Acta"
+					Target="_blank"
+					Attributes.onclick="if(!confirm('Todos los casos e informes asigandos a este grupo cambiaran de estado, esta seguro?')) return false;"
+				   />		
+			    </td>
+				</tr>
+				</table>
+				</prop:ItemTemplate>
+				
+				</com:TDataList>
+	
+	<br />
+	
+   	<com:TActiveLabel ID="mensajes" Text=""></com:TActiveLabel>
+	<com:TActiveLabel ID="alertas" Text=""></com:TActiveLabel>
+	<br /><br />
+ 
+ <!--  <com:TJavascriptLogger />  -->
+  
+    </com:TActivePanel>		 
+  
+</com:TContent>
+
+<com:TContent ID="informacion">
+   <com:TLabel ID="usuario"  Text="<b>Usuario:</b> Ninguno." />
+</com:TContent>
+
+

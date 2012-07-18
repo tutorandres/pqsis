@@ -1,0 +1,69 @@
+
+<com:TContent ID="contenido">
+
+
+<h1>INICIO DE SESI&Oacute;N</h1>
+ <br />
+    
+	
+    <com:TPanel GroupingText="Datos necesarios para iniciar sesi&oacute;n" Width="510px">
+    <com:TTable>
+              <com:TTableRow>
+                <com:TTableCell>
+                    <com:TLabel ID="Label1" Text="Nombre de usuario:" ForControl="username" />
+                </com:TTableCell>
+                <com:TTableCell>
+                    <com:TTextBox ID="username" Width="150px" />
+                    <com:TRequiredFieldValidator ControlToValidate="username" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />
+                </com:TTableCell>
+              </com:TTableRow>
+      
+	  
+	          <com:TTableRow>
+                <com:TTableCell>
+                    <com:TLabel ID="Label2" Text="Contrase&ntilde;a:" ForControl="password" />
+                </com:TTableCell>
+                <com:TTableCell>
+                    <com:TTextBox ID="password" TextMode="Password" Width="150px" />
+                    <com:TRequiredFieldValidator ControlToValidate="password" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />
+				</com:TTableCell>
+              </com:TTableRow>
+			  
+			  
+			 <com:TTableRow>	
+				<com:TTableCell>
+				</com:TTableCell>
+				
+				<com:TTableCell>
+				<br/>
+				<com:TImage ImageUrl="themes/Basic/punto_azul.png" Style="padding:0px;border-style:none;margin-left:60px;"  ImageAlign="middle" ToolTip="Consultar" /> 
+				<com:TActiveLinkButton
+				Text="Ingresar"
+				Font.Size="12pt"
+				ValidationGroup="Group1"
+				OnCallback="loginUser"
+				ActiveControl.CallbackParameter="value">
+				<prop:ClientSide 
+				OnLoading="Element.show('callback_image');"  
+				OnComplete="Element.hide('callback_image');" 
+				/>	
+				</com:TActiveLinkButton>
+				<span id="callback_image" style="display:none">Enviando...<img src="themes/Basic/loading.gif" alt="Cargando"/></span>
+				</com:TTableCell>
+				
+			</com:TTableRow> 
+	  </com:TTable>
+      </com:TPanel>
+
+	<br /><br />
+   	<com:TActiveLabel ID="mensajes" Text=""></com:TActiveLabel>
+	<com:TActiveLabel ID="alertas" Text=""></com:TActiveLabel>
+	<br /><br />
+	
+    <!--  <com:TJavascriptLogger />  --> 
+	
+</com:TContent>
+
+<com:TContent ID="informacion">
+   <com:TLabel ID="usuario"  Text="<b>Usuario:</b> Ninguno." />
+</com:TContent>

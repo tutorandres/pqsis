@@ -1,0 +1,475 @@
+
+
+<com:TContent ID="Main">
+
+	 <h1>SISCOMITES</h1>
+	 <h1>GENERACI&Oacute;N DE ACTA</h1>
+   
+	
+	<com:TActivePanel id="DataPanel">
+	
+	<div style="padding:10px;margin:20px;">
+	
+	<com:TActiveLabel ID="mensajes" Text=""></com:TActiveLabel>
+	<com:TActiveLabel ID="alertas" Text="" BackColor="#FFFFFF" ></com:TActiveLabel>
+	<br /><br />
+	
+	<com:TPanel GroupingText="Datos generales del acta" Width="700px">
+    <com:TTable CellSpacing="5" Width="650px" CellPadding="5" HorizontalAlign="Left">
+             
+               <com:TTableRow>
+                <com:TTableCell Width="200px">
+                    <com:TLabel ID="Label1" Text="Datos:" ForControl="datos_fijos" />
+                </com:TTableCell>
+                <com:TTableCell Width="450px">
+				<com:TLabel ID="datos_fijos"  Text="" />
+                </com:TTableCell>
+              </com:TTableRow>
+
+			 <com:TTableRow>
+                <com:TTableCell Width="200px">
+                    <com:TLabel ID="Label2" Text="Tipo de comite:" ForControl="datos_tipo" />
+                </com:TTableCell>
+                <com:TTableCell Width="450px">
+                     <com:TDropDownList ID="datos_tipo" />					 
+                     <com:TRequiredFieldValidator ControlToValidate="datos_tipo" InitialValue="1" Display="Dynamic" ErrorMessage="Falta el tipo de acta." ValidationGroup="Group1" />
+                </com:TTableCell>
+              </com:TTableRow>
+
+              <com:TTableRow>
+                <com:TTableCell Width="200px">
+                    <com:TLabel ID="Label3" Text="Fecha:" ForControl="datos_fecha" />
+                </com:TTableCell>
+                <com:TTableCell Width="450px">			   
+					<com:TDatePicker ID="datos_fecha" DateFormat="yyyy-MM-dd" Culture="es" InputMode="DropDownList" Mode="Basic" CssClass="calendarstyle" />		   
+			   </com:TTableCell>
+              </com:TTableRow>
+			  
+              <com:TTableRow>
+                <com:TTableCell Width="200px">
+                    <com:TLabel ID="Label5" Text="Hora incio:" ForControl="datos_hora" />
+                </com:TTableCell>
+                <com:TTableCell Width="450px">
+                    <com:TTextBox ID="datos_hora" Width="200px"/><br/>
+					<com:TRequiredFieldValidator ControlToValidate="datos_hora" Display="Dynamic" ErrorMessage="Falta la hora inicio." ValidationGroup="Group1" />
+                </com:TTableCell>
+              </com:TTableRow>
+			  
+			 <com:TTableRow>
+                <com:TTableCell Width="200px">
+                    <com:TLabel ID="Label6" Text="Hora final:" ForControl="datos_horafin" />
+                </com:TTableCell>
+                <com:TTableCell Width="450px">
+                    <com:TTextBox ID="datos_horafin" Width="200px"/><br/>
+					<com:TRequiredFieldValidator ControlToValidate="datos_horafin" Display="Dynamic" ErrorMessage="Falta la hora final." ValidationGroup="Group1" />
+                </com:TTableCell>
+              </com:TTableRow>
+			  
+			 <com:TTableRow>
+                <com:TTableCell Width="200px">
+                    <com:TLabel ID="Label7" Text="Lugar:" ForControl="datos_lugar" />
+                </com:TTableCell>
+                <com:TTableCell Width="450px">
+                    <com:TTextBox ID="datos_lugar" Width="200px"/><br/>
+					<com:TRequiredFieldValidator ControlToValidate="datos_lugar" Display="Dynamic" ErrorMessage="Falta el Lugar." ValidationGroup="Group1" />
+                </com:TTableCell>
+              </com:TTableRow>
+			  
+			<com:TTableRow>
+                <com:TTableCell Width="200px">
+                    <com:TLabel ID="Label8" Text="Responsable:" ForControl="datos_responsable" />
+                </com:TTableCell>
+                <com:TTableCell Width="450px">
+                    <com:TTextBox ID="datos_responsable" Width="200px"/><br/>
+					<com:TRequiredFieldValidator ControlToValidate="datos_responsable" Display="Dynamic" ErrorMessage="Falta el responsable." ValidationGroup="Group1" />
+                </com:TTableCell>
+              </com:TTableRow>
+			  
+			  
+			  <com:TTableRow>
+                <com:TTableCell Width="200px">
+                </com:TTableCell>
+                <com:TTableCell Width="450px">
+					<br/>
+
+					<com:TImage ImageUrl="themes/Basic/punto_azul.png" Style="padding:0px;border-style:none;margin-left:1px;"  ImageAlign="middle" ToolTip="Consultar" /> 
+					<com:TActiveLinkButton
+					Text="Guardar"
+					ValidationGroup="Group1"
+					OnCallback="guardar_acta"
+					ActiveControl.CallbackParameter="value">
+					<prop:ClientSide 
+					OnLoading="Element.show('callback_image');"  
+					OnComplete="Element.hide('callback_image');" 
+					/>	
+					</com:TActiveLinkButton>
+					
+					
+					 <com:TImage ImageUrl="themes/Basic/punto_morado.png" Style="padding:0px;border-style:none;margin-left:1px;"  ImageAlign="middle" ToolTip="Generar Citaci&oacute;n" />
+					 <com:TLinkButton
+						ID="bgenerar_acta"
+						Text="Generar Acta"
+						ValidationGroup="Group1"
+						OnCommand="generar_doc_acta"				
+						Attributes.onclick="if(!confirm('Esta seguro de generar el documento?')) return false;"		
+					 >	
+					 </com:TLinkButton>
+					
+					
+					
+					<com:TImage ImageUrl="themes/Basic/punto_amarillo.png" Style="padding:0px;border-style:none;margin-left:1px;"  ImageAlign="middle" ToolTip="Actualizar" />
+					<com:THyperLink	NavigateUrl="<%=$this->Service->constructUrl('secretario.Generar_acta',array('sesion'=>$this->request['sesion'],'grupo'=>$this->request['grupo']))%>"	Text="Actualizar" />
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<span id="callback_image" style="display:none">Guardando...<img src="themes/Basic/loading.gif" alt="Cargando"/></span>
+					
+				
+					
+      		   </com:TTableCell>
+              </com:TTableRow>
+			  
+      </com:TTable>					
+      </com:TPanel>
+      <br />
+
+	
+	  <com:TPanel GroupingText="Asistentes del comite" Width="700px">
+   
+     <div style="padding:5px;margin:5px;text-align:right;">
+	 <com:TImage ImageUrl="themes/Basic/punto_naranja.png" Style="padding:0px;border-style:none;margin-left:10px;"  ImageAlign="middle" ToolTip="Agregar Asistente" />
+	 <com:THyperLink
+	 NavigateUrl="<%=$this->Service->constructUrl('secretario.Add_asistente_acta', array('acta_id'=>$this->request['sesion'] . '-' . $this->request['grupo']))%>"
+	 Text="Crear Asistente"
+	 Target="_blank"
+	 /></div>
+   
+     <com:TDataList
+     ID="dl_asistentes"
+     DataKeyField="id"
+	 AllowPaging="false"
+	 HorizontalAlign="Left"
+	 CaptionAlign="Right"
+     OnEditCommand="editItem"
+     OnCancelCommand="cancelItem"
+     OnUpdateCommand="updateItem"
+     OnDeleteCommand="deleteItem"
+     HeaderStyle.BackColor="#74A846"
+     ItemStyle.BackColor="#E6ECFF"
+     AlternatingItemStyle.BackColor="#FFFFFF"
+     EditItemStyle.BackColor="#E4E4E4"
+     SelectedItemStyle.BackColor="lightyellow">
+ 
+ 
+	<prop:HeaderTemplate>
+	<table style="width=700px;padding:0px;margin:0px;">
+	<tr> 
+	   <th width="280px">Nombre</th> 
+	   <th width="290px">Rol - Correo - Entidad - N&uacute;mero</th>
+	   <th width="50px">Asistio?</th> 	   
+	   <th width="80px">Opciones</th> 
+	</tr>
+	</table> 
+	</prop:HeaderTemplate>
+
+	<prop:ItemTemplate>
+	<table style="width=700px;padding:0px;margin:0px;">
+	<tr>
+	  <td width="280px"><%#$this->DataItem['nombre']%></td>	 
+	  <td width="290px"><%#$this->DataItem['rol']%> - 
+						<%#$this->DataItem['correo']%> - 
+						<%#$this->DataItem['entidad']%> - 
+						<%#$this->DataItem['numero']%>
+	  </td>
+	  <td width="50px"><%#$this->DataItem['asistio']%></td>	   
+	  <td width="80px">
+	  
+	      <com:TImage ImageUrl="themes/Basic/punto_verde.png" Style="padding:0px;border-style:none;margin-left:0px;"  ImageAlign="middle" ToolTip="Editar" />
+		  <com:THyperLink
+			NavigateUrl="<%=$this->Service->constructUrl('secretario.Editar_asistente_acta', array('id'=>$this->DataItem['id']))%>"
+			Text="Editar"
+			Target="_blank"
+		  />
+		  <br/>
+		  <com:TImage ImageUrl="themes/Basic/punto_rojo.png" Style="padding:0px;border-style:none;margin-left:0px;"  ImageAlign="middle" ToolTip="Eliminar" />
+		  <com:TLinkButton Text="Eliminar" CommandName="delete" Attributes.onclick="if(!confirm('Esta seguro?')) return false;"/>
+    </td>
+	</tr>
+	</table>
+	</prop:ItemTemplate>
+
+	</com:TDataList>	   
+	</com:TPanel>
+	<br />
+	
+	
+	<com:TPanel GroupingText="Informes Generales Enviados" Width="700px">
+	
+	 <div style="padding:5px;margin:0px;text-align:right;color:#FF0000;">
+	    <com:TImage
+		ImageUrl="themes/Basic/tip.gif"
+		ToolTip="Para agregar un informe primero debe enviarlo desde &quot;Enviar Informe y luego programarlo desde &quot;Programar Sesi&oacute;n&quot;."		
+	    />		
+	 </div>
+   
+     <com:TDataList
+     ID="dl_informes"
+     DataKeyField="id"
+	 AllowPaging="false"
+	 HorizontalAlign="Left"
+	 CaptionAlign="Right"
+     OnEditCommand="editItem"
+     OnCancelCommand="cancelItem"
+     OnUpdateCommand="updateItem"
+     OnDeleteCommand="deleteItem"
+     HeaderStyle.BackColor="#A99F46"
+     ItemStyle.BackColor="#E6ECFF"
+     AlternatingItemStyle.BackColor="#FFFFFF"
+     EditItemStyle.BackColor="#E4E4E4"
+     SelectedItemStyle.BackColor="lightyellow">
+ 
+ 
+	<prop:HeaderTemplate>
+	<table style="width=700px;padding:0px;margin:0px;">
+	<tr> 
+	   <th width="160px">Informante</th> 
+	   <th width="460px">Descripcion</th>   
+	   <th width="80px">Opciones</th> 
+	</tr>
+	</table> 
+	</prop:HeaderTemplate>
+
+	<prop:ItemTemplate>
+	<table style="width=700px;padding:0px;margin:0px;">
+	<tr>
+	  <td width="160px"><%#$this->DataItem['nombre']%></td>	 
+	  <td width="460px"><%#$this->DataItem['descripcion']%></td>
+	  <td width="80px">
+	  
+	      <com:TImage ImageUrl="themes/Basic/punto_verde.png" Style="padding:0px;border-style:none;margin-left:0px;"  ImageAlign="middle" ToolTip="Editar" />
+		  <com:THyperLink
+			NavigateUrl="<%=$this->Service->constructUrl('secretario.Editar_informe_acta', array('id'=>$this->DataItem['proceso_id']))%>"
+			Text="Editar"
+			Target="_blank"
+		  />
+		  <br/>
+		  
+<!--		  <com:TImage ImageUrl="themes/Basic/punto_rojo.png" Style="padding:0px;border-style:none;margin-left:0px;"  ImageAlign="middle" ToolTip="Eliminar" />
+		  <com:TLinkButton Text="Eliminar" CommandName="delete" Attributes.onclick="if(!confirm('Esta seguro?, se eliminara de la programacion tambien.')) return false;"/>-->
+		  
+    </td>
+	</tr>
+	</table>
+	</prop:ItemTemplate>
+
+	</com:TDataList>
+
+	<com:TTable CellSpacing="5" Width="700px" CellPadding="5" HorizontalAlign="Left"> 
+ 	<com:TTableRow>
+         <com:TTableCell Width="200px">
+                    <com:TLabel ID="Label18" Text="Agregar Informaci&oacute;n:" ForControl="datos_introduccion" />
+         <a target="_blank" href="http://revisor.com.ar">Abrir Corrector Ortogr&aacute;fico Online (Copie y pege su texto)</a>
+		 </com:TTableCell>
+         <com:TTableCell Width="500px">
+                    <com:THtmlArea ID="datos_introduccion" EnableVisualEdit="false" Width="480px" Height="80px" />
+         </com:TTableCell>
+    </com:TTableRow>
+	</com:TTable>
+
+	</com:TPanel>
+	<br />
+	
+	<com:TPanel GroupingText="Casos Enviados" Width="700px">
+	
+	 <div style="padding:5px;margin:0px;text-align:right;color:#FF0000;">
+	    <com:TImage
+		ImageUrl="themes/Basic/tip.gif"
+		ToolTip="Para agregar un caso primero debe enviarlo desde &quot;Enviar Caso&quot; y luego programarlo desde &quot;Programar Sesi&oacute;n&quot;."		
+	    />   	 
+	 </div>
+   
+     <com:TDataList
+     ID="dl_casos"
+     DataKeyField="id"
+	 AllowPaging="false"
+	 HorizontalAlign="Left"
+	 CaptionAlign="Right"
+     OnEditCommand="editItem"
+     OnCancelCommand="cancelItem"
+     OnUpdateCommand="updateItem"
+     OnDeleteCommand="deleteItem"
+	 OnSelectedIndexChanged="selectItem"
+     HeaderStyle.BackColor="#A97746"
+     ItemStyle.BackColor="#E6ECFF"
+     AlternatingItemStyle.BackColor="#FFFFFF"
+     EditItemStyle.BackColor="#E4E4E4"
+     SelectedItemStyle.BackColor="lightyellow">
+ 
+ 
+	<prop:HeaderTemplate>
+	<table style="width=700px;padding:0px;margin:0px;">
+	<tr> 
+	   <th width="250px">Aprendiz</th> 
+	   <th width="220px">Desicion</th>	   
+	   <th width="230px">Opciones</th> 
+	</tr>
+	</table> 
+	</prop:HeaderTemplate>
+
+	<prop:ItemTemplate>
+	<table style="width=700px;padding:0px;margin:0px;">
+	<tr>
+	  <td width="250px"><%#$this->DataItem['aprendiz']%></td>	 
+	  <td width="220px">
+	  
+	  
+	  <com:TImage ImageUrl="themes/Basic/punto_morado.png" Style="padding:0px;border-style:none;margin-left:1px;"  ImageAlign="middle" ToolTip="Generar Documento" />
+	   <com:TLinkButton
+						ID="bgenerar_doc"
+						Text=<%#$this->DataItem['doc_text']%>
+						Enabled=<%#$this->DataItem['doc_enabled']%>
+						CommandName="select" 
+						Attributes.onclick="if(!confirm('Esta seguro de generar el documento?')) return false;"
+
+					>
+	   </com:TLinkButton>
+	  
+	  
+	  
+	  </td>
+	  <td width="230px">
+	  
+	      
+		  <com:TImage ImageUrl="themes/Basic/punto_amarillo.png" Style="padding:0px;border-style:none;margin-left:0px;"  ImageAlign="middle" ToolTip="Abrir Caso" />
+		  <com:THyperLink
+			NavigateUrl="<%=$this->Service->constructUrl('secretario.Procesar_caso_acta', array('proceso_id'=>$this->DataItem['id']))%>"
+			Text="Abrir"
+			Target="_blank"
+		  />
+		  
+		  <com:TImage ImageUrl="themes/Basic/punto_verde.png" Style="padding:0px;border-style:none;margin-left:10px;"  ImageAlign="middle" ToolTip="Editar" />
+		  <com:THyperLink
+			NavigateUrl="<%=$this->Service->constructUrl('secretario.Editar_caso_acta', array('id'=>$this->DataItem['proceso_id']))%>"
+			Text="Editar"
+			Attributes.onclick="if(!confirm('Recuerde que la citacion se envio con estos datos. Podria generar una inconsistencia en la trazabilidad del proceso.')) return false;"
+			Target="_blank"
+		  />
+		  
+<!--		  <com:TImage ImageUrl="themes/Basic/punto_rojo.png" Style="padding:0px;border-style:none;margin-left:10px;"  ImageAlign="middle" ToolTip="Eliminar" />
+		  <com:TLinkButton Text="Eliminar" CommandName="delete" Attributes.onclick="if(!confirm('Esta seguro?')) return false;"/>-->
+		  
+		  
+		  
+    </td>
+	</tr>
+	</table>
+	</prop:ItemTemplate>
+
+	</com:TDataList>	   
+	</com:TPanel>
+	<br />
+	
+	
+    <com:TPanel GroupingText="Compromisos Extra" Width="700px">
+	
+	
+	 <div style="padding:5px;margin:5px;text-align:right;">
+	 <com:TImage ImageUrl="themes/Basic/punto_naranja.png" Style="padding:0px;border-style:none;margin-left:10px;"  ImageAlign="middle" ToolTip="Agregar Compromiso" />
+	 <com:THyperLink
+	 NavigateUrl="<%=$this->Service->constructUrl('secretario.Add_compromiso_acta', array('acta_id'=>$this->request['sesion'] . '-' . $this->request['grupo']))%>"
+	 Text="Crear Compromiso"
+	 Target="_blank"
+	 /></div>
+   
+     <com:TDataList
+     ID="dl_compromisos"
+     DataKeyField="id"
+	 AllowPaging="false"
+	 HorizontalAlign="Left"
+	 CaptionAlign="Right"
+     OnEditCommand="editItem"
+     OnCancelCommand="cancelItem"
+     OnUpdateCommand="updateItem"
+     OnDeleteCommand="deleteItem"
+     HeaderStyle.BackColor="#46A988"
+     ItemStyle.BackColor="#E6ECFF"
+     AlternatingItemStyle.BackColor="#FFFFFF"
+     EditItemStyle.BackColor="#E4E4E4"
+     SelectedItemStyle.BackColor="lightyellow">
+ 
+ 
+	<prop:HeaderTemplate>
+	<table style="width=700px;padding:0px;margin:0px;">
+	<tr> 
+	   <th width="100px">Fecha</th> 
+	   <th width="350px">Descripcion</th>	   
+	   <th width="150px">Responsables</th>
+	   <th width="100px">Opciones</th> 	   
+	</tr>
+	</table> 
+	</prop:HeaderTemplate>
+
+	<prop:ItemTemplate>
+	<table style="width=700px;padding:0px;margin:0px;">
+	<tr>
+	  <td width="100px"><%#$this->DataItem['fecha']%></td>	 
+	  <td width="350px"><%#$this->DataItem['descripcion']%></td>
+	  <td width="150px"><%#$this->DataItem['responsables']%></td>
+	  <td width="100px">
+	  
+	      <com:TImage ImageUrl="themes/Basic/punto_verde.png" Style="padding:0px;border-style:none;margin-left:10px;"  ImageAlign="middle" ToolTip="Editar" />
+		  <com:THyperLink
+			NavigateUrl="<%=$this->Service->constructUrl('secretario.Editar_compromiso_acta', array('id'=>$this->DataItem['id']))%>"
+			Text="Editar"
+			Target="_blank"
+		  />
+
+		  <com:TImage ImageUrl="themes/Basic/punto_rojo.png" Style="padding:0px;border-style:none;margin-left:10px;"  ImageAlign="middle" ToolTip="Eliminar" />
+		  <com:TLinkButton Text="Eliminar" CommandName="delete" Attributes.onclick="if(!confirm('Esta seguro?')) return false;"/>
+    </td>
+	</tr>
+	</table>
+	</prop:ItemTemplate>
+
+	</com:TDataList>
+	</com:TPanel>
+	<br />
+	<com:TTable CellSpacing="5" Width="300px" CellPadding="5" HorizontalAlign="Left">
+    <com:TTableRow>
+			    <com:TTableCell Width="150px">
+                    <com:TLabel ID="Label9" Text="Estado de Acta:" ForControl="datos_estado" />
+                </com:TTableCell>
+				<com:TTableCell Width="150px">
+					<com:TDropDownList ID="datos_estado" Width="100px">
+					<com:TListItem Value="1" Text="Pendiente"/>
+					<com:TListItem Value="2" Text="Realizada"/>
+					</com:TDropDownList>
+			    </com:TTableCell>
+	</com:TTableRow>
+    </com:TTable>
+	<br />
+	
+	
+	<com:TTable CellSpacing="5" Width="300px" CellPadding="5" HorizontalAlign="Left">
+    <com:TTableRow>
+	<com:TTableCell Width="300px">
+    
+		<com:TValidationSummary
+        ValidationGroup="Group1"
+        AutoUpdate="true"
+        Display="None"
+        ShowMessageBox="true"
+        HeaderText="Resumen de errores:" />
+	
+    </com:TTableCell>
+	</com:TTableRow>	
+    </com:TTable>
+	
+	
+	
+	</div>
+	
+	 <!-- <com:TJavascriptLogger />  -->
+    </com:TActivePanel>		 
+  
+</com:TContent>
+
+

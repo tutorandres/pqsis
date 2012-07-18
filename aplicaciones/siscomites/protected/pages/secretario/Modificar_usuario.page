@@ -1,0 +1,101 @@
+
+
+<com:TContent ID="contenido">
+
+	 <h1>MODIFICAR CONTRASE&Ntilde;AS</h1><br/>
+   
+
+	<com:TPanel GroupingText="Modificar Contrase&ntilde;as" Width="460px">
+    
+	<com:THiddenField ID="id1" Value="" /> 
+    <com:THiddenField ID="id2" Value="" /> 
+
+	<com:TTable CellSpacing="5" Width="450px" CellPadding="5" HorizontalAlign="Left">				  
+			  
+			  <com:TTableRow>
+                <com:TTableCell Width="150px">
+                    <com:TLabel ID="Label1" Text="Rol:" ForControl="rol" />
+                </com:TTableCell>
+                <com:TTableCell Width="300px">
+                    <com:TTextBox ReadOnly="true" BackColor="#E6E6E6" ID="rol" Width="200px"/><br/>
+                </com:TTableCell>
+              </com:TTableRow>
+			  
+			  <com:TTableRow>
+                <com:TTableCell Width="150px">
+                    <com:TLabel ID="Label2" Text="Nombre:" ForControl="nombre_usuario1" />
+                </com:TTableCell>
+                <com:TTableCell Width="300px">
+                    <com:TTextBox ReadOnly="true" BackColor="#E6E6E6" ID="nombre_usuario1" Width="200px"/><br/>
+                </com:TTableCell>
+              </com:TTableRow>
+              <com:TTableRow>
+                <com:TTableCell Width="150px">
+                    <com:TLabel ID="Label3" Text="Contrase&ntilde;a:" ForControl="password" />
+                </com:TTableCell>
+                <com:TTableCell Width="300px">
+                    <com:TTextBox ID="password"  Width="200px"/><br/>
+					<com:TRequiredFieldValidator ControlToValidate="password" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />
+				</com:TTableCell>
+              </com:TTableRow>
+			  
+			
+			  <com:TTableRow>
+                <com:TTableCell Width="150px">
+                    <com:TLabel ID="Label4" Text="Rol:" ForControl="rol2" />
+                </com:TTableCell>
+                <com:TTableCell Width="300px">
+                    <com:TTextBox ReadOnly="true" BackColor="#E6E6E6" ID="rol2" Width="200px"/><br/>
+                </com:TTableCell>
+              </com:TTableRow>
+			  <com:TTableRow>
+                <com:TTableCell Width="150px">
+                    <com:TLabel ID="Label5" Text="Nombre:" ForControl="nombre_usuario2" />
+                </com:TTableCell>
+                <com:TTableCell Width="300px">
+                    <com:TTextBox ReadOnly="true" BackColor="#E6E6E6" ID="nombre_usuario2" Width="200px"/><br/>
+                </com:TTableCell>
+              </com:TTableRow>
+              <com:TTableRow>
+                <com:TTableCell Width="150px">
+                    <com:TLabel ID="Label6" Text="Contrase&ntilde;a:" ForControl="password2" />
+                </com:TTableCell>
+                <com:TTableCell Width="300px">
+                    <com:TTextBox ID="password2"  Width="200px"/><br/>
+					<com:TRequiredFieldValidator ControlToValidate="password2" Display="Dynamic" ErrorMessage="Dato obligatorio." ValidationGroup="Group1" />
+				</com:TTableCell>
+              </com:TTableRow>
+			  
+
+
+			  <com:TTableRow> 
+			    <com:TTableCell Width="150px">
+                </com:TTableCell>
+				<com:TTableCell Width="300px">
+	      
+			    <com:TImage ImageUrl="themes/Basic/punto_azul.png" Style="padding:0px;border-style:none;margin-left:10px;"  ImageAlign="middle" ToolTip="Guardar" />
+				<com:TLinkButton ID="guardar" Text="Guardar" Enabled="false" OnCommand="guardar" ValidationGroup="Group1" />				
+ 
+			    </com:TTableCell>
+			  </com:TTableRow>			  
+      </com:TTable>
+	  
+      </com:TPanel>
+    
+	<br /> 
+	<com:TActivePanel id="DataPanel">
+	<com:TActiveLabel ID="mensajes" Text=""></com:TActiveLabel>
+	<com:TActiveLabel ID="alertas" Text="" BackColor="#FFFFFF" ></com:TActiveLabel>
+	<br/><br/> 
+	  
+	
+	<!-- <com:TJavascriptLogger />  -->
+    </com:TActivePanel>		 
+  
+</com:TContent>
+
+<com:TContent ID="informacion">
+   <com:TLabel ID="usuario"  Text="<b>Usuario:</b> Ninguno." />
+</com:TContent>
+
+

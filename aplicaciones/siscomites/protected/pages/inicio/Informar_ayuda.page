@@ -1,0 +1,19 @@
+
+<com:TContent ID="contenido">
+<h1>AYUDA</h1>
+<p>
+Pr&oacute;ximamente encuentre en esta secci&oacute;n documentaci&oacute;n, 
+manual de usuario y videos sobre el uso de <b>SISCOMITES.</b>
+</p>
+
+
+
+<br /><br /><br /><br /><br /><br /><br />
+
+</com:TContent>
+
+
+
+<com:TContent ID="informacion">
+   <com:TLabel ID="usuario"  Text="<b>Usuario:</b> Ninguno." />
+</com:TContent>
